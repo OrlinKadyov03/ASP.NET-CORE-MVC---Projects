@@ -1,0 +1,57 @@
+﻿@model IEnumerable<OrCarsOriginal.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<h1>List of cars for sale</h1>
+<table class="table table-dark table-striped">
+    <thead>
+       @* <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HorsePower)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadedBy)
+            </th>
+            <th></th>
+       </tr>
+        *@
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @{
+                        string text = ("/car/details/" + item.Id + "/" + item.Brand
+                        + "-" + item.Model + "-" +item.Color).
+                        Replace(' ', '-');
+                    }
+                    <a href="@text">@Html.DisplayFor(modelItem => item.CBrand)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadedBy)
+            </td>
+            <td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
