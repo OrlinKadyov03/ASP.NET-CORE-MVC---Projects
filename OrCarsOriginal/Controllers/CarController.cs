@@ -15,6 +15,8 @@ namespace OrCarsOriginal.Controllers
 {
     public class CarController : Controller
     {
+
+        private static int maxNoImages = 1;
         private readonly ApplicationDbContext _context;
 
         public CarController(ApplicationDbContext context)
@@ -216,16 +218,19 @@ namespace OrCarsOriginal.Controllers
             int fileNumber = 0;
             foreach (var file in files)
             {
-                fileNumber++;
-                string imageFolder = "\\wwwroot\\Car";
-                var filePath = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,
-                     Id.ToString() + "-" + fileNumber.ToString() + "-" + file.FileName);
-                fileNameS.Add(file.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                if (fileNumber < maxNoImages)
                 {
-                    await file.CopyToAsync(stream);
+                    fileNumber++;
+                    string imageFolder = "\\wwwroot\\Car";
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,
+                         Id.ToString() + "-" + fileNumber.ToString() + ".jpg");
+                    fileNameS.Add(file.FileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    ViewBag.Message += file.FileName + ", ";
                 }
-                ViewBag.Message += file.FileName + ", ";
             }
 
 

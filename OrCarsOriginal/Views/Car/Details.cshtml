@@ -54,7 +54,10 @@
             @Html.DisplayFor(model => model.SState)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageLink)
+            @{ string imageSrc = "/car/" + Model.Id + "-1.jpg";  }
+            <img  src="@imageSrc"/>
+
+            @*@Html.DisplayNameFor(model => model.ImageLink)*@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ImageLink)
@@ -122,7 +125,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+   | <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a> |
     <a asp-action="FileUploadPage" asp-route-id="@Model?.Id">Upload Photo</a> |
 
