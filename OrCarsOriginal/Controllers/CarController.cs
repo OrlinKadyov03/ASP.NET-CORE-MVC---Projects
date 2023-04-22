@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using OrCarsOriginal.Data;
@@ -24,9 +25,9 @@ namespace OrCarsOriginal.Controllers
         // GET: Car
         public async Task<IActionResult> Index()
         {
-              return _context.Car != null ? 
-                          View(await _context.Car.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Car'  is null.");
+            return _context.Car != null ?
+                        View(await _context.Car.ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Car'  is null.");
         }
 
         // GET: Car/Details/5
@@ -123,7 +124,7 @@ namespace OrCarsOriginal.Controllers
                         {
                             throw;
                         }
-                    }                   
+                    }
                 }
                 else
                 {
@@ -178,7 +179,7 @@ namespace OrCarsOriginal.Controllers
 
         private bool CarExists(int id)
         {
-          return (_context.Car?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Car?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         public async Task<IActionResult> UnauthorizedAction()
@@ -192,29 +193,43 @@ namespace OrCarsOriginal.Controllers
             return View();
         }
 
-        public IActionResult FileUploadPage()
+        //Getting photos with it's id and numbering them.
+        public IActionResult FileUploadPage(int id)
         {
-            return View();
+            var car = _context.Car.Find(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            return View(car);
         }
         [HttpPost]
-        public async Task<IActionResult> FileUploadPage(List<IFormFile> files)
+        public async Task<IActionResult> FileUploadPage(List<IFormFile> files, int? Id)
         {
             var fileSize = files.Sum(m => m.Length);
-            var filePaths = new List<string>();
+            var fileNameS = new List<string>();
 
+
+            ViewBag.Message = " Files uploaded " ;
+
+            int fileNumber = 0;
             foreach (var file in files)
             {
+                fileNumber++;
                 string imageFolder = "\\wwwroot\\Car";
-                var filePath = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,file.FileName);
-                filePaths.Add(filePath);
-                using (var stream = new FileStream(filePath, FileMode.Create)) 
+                var filePath = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,
+                     Id.ToString() + "-" + fileNumber.ToString() + "-" + file.FileName);
+                fileNameS.Add(file.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
+                ViewBag.Message += file.FileName + ", ";
             }
 
 
-            return Ok();
+            return View();
         }
     }
 }

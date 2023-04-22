@@ -1,15 +1,20 @@
-﻿
+﻿@model OrCarsOriginal.Models.Car
+
 @{
     ViewData["Title"] = "FileUploadPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h4>FileUploadPage</h4>
+<p>
+    @ViewBag.Message
+</p>
 <form method="post" enctype="multipart/form-data" asp-controller="Car" asp-action="FileUploadPage">
 
 <div>
     <div>
         <input type="file" name="files" multiple/>
+        <input type="hidden" asp-for="Id" />
     </div>
 </div>
 
