@@ -17,6 +17,8 @@ namespace OrCarsOriginal.Controllers
     {
 
         private static int maxNoImages = 1;
+        private static int maxImageWidth = 900;
+        private static int maxImageHeight = 600;
         private readonly ApplicationDbContext _context;
 
         public CarController(ApplicationDbContext context)
@@ -167,6 +169,7 @@ namespace OrCarsOriginal.Controllers
                 return Problem("Entity set 'ApplicationDbContext.Car'  is null.");
             }
             var car = await _context.Car.FindAsync(id);
+            //allow delete only to upload user
             if (car.UploadedBy.Equals(User.Identity.Name))
             {
                 _context.Car.Remove(car);
@@ -209,6 +212,16 @@ namespace OrCarsOriginal.Controllers
         [HttpPost]
         public async Task<IActionResult> FileUploadPage(List<IFormFile> files, int? Id)
         {
+
+
+
+            var car = await _context.Car.FindAsync(Id);
+            //allow upload only to uploaded user
+            if (car.UploadedBy.Equals(User.Identity.Name))
+            {
+              
+           
+            #region upload
             var fileSize = files.Sum(m => m.Length);
             var fileNameS = new List<string>();
 
@@ -227,6 +240,16 @@ namespace OrCarsOriginal.Controllers
                     fileNameS.Add(file.FileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
+                        // modifications ImageSharp
+                        using var image = Image.Load(file.OpenReadStream());
+                        if (image.Width > maxImageWidth || image.Height > maxImageHeight)
+                        {
+                            return Ok("Image is too big (Image,Height)" + image.Width + ","
+                                + image.Height);
+                        }
+                        image.Mutate(x => x.Resize(256, 256));
+                        image.SaveAsJpeg("wwwroot/car/" + Id.ToString() + "-" + fileNumber.ToString() + "_s.jpg");
+                        // end modification
                         await file.CopyToAsync(stream);
                     }
                     ViewBag.Message += file.FileName + ", ";
@@ -235,6 +258,12 @@ namespace OrCarsOriginal.Controllers
 
 
             return View();
+                #endregion
+            }
+            else
+            {
+                return View("UnauthorizedAction");
+            }
         }
     }
 }

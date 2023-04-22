@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5AzirAyr5eVgZNzNvrBmhJXfaDbkMkBn4tP/xJ2MM0yf2r6DKExVJzuHOgIp+5KzGEaFLQjL0zb+gHZOBEpyxQ==",
+  "dgSpecHash": "uUES2JZkpBXjuXAHeudnX0714AXpPv/UDPfZMp2M/M8dNZpZgB23OqKT5fPhBJlNaCDR/z65GsCRMZatoWyW/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\OrCarsOriginal.csproj",
   "expectedPackageFiles": [
@@ -104,6 +104,7 @@
     "C:\\Users\\Hp\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\sixlabors.imagesharp\\3.0.1\\sixlabors.imagesharp.3.0.1.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

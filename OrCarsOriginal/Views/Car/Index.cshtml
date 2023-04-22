@@ -50,6 +50,10 @@
                 @Html.DisplayFor(modelItem => item.UploadedBy)
             </td>
             <td>
+                    @{
+                        string imageSrc = "/car/" + item.Id + "-1_s.jpg";
+                    }
+                    <img src="@imageSrc" />
             </td>
         </tr>
 }

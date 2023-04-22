@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iU/QUu5FKSAton/vpW8CabE2oH+crqoIe/60NgH+6LU=",
+  "Hash": "ZqOz2tkO8lYgfcauZPPboqezGuQcSZz7I1R3/sY97nA=",
   "Source": "OrCarsOriginal",
   "BasePath": "_content/OrCarsOriginal",
   "Mode": "Default",
@@ -1071,6 +1071,40 @@
       "OriginalItemSpec": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\OrCarsOriginal.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\Car\\2-1.jpg",
+      "SourceId": "OrCarsOriginal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\",
+      "BasePath": "_content/OrCarsOriginal",
+      "RelativePath": "Car/2-1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Car\\2-1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\Car\\2-1_s.jpg",
+      "SourceId": "OrCarsOriginal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\",
+      "BasePath": "_content/OrCarsOriginal",
+      "RelativePath": "Car/2-1_s.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Car\\2-1_s.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\Car\\3-1.jpg",
       "SourceId": "OrCarsOriginal",
       "SourceType": "Discovered",
@@ -1086,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Car\\3-1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\Car\\3-1_s.jpg",
+      "SourceId": "OrCarsOriginal",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\",
+      "BasePath": "_content/OrCarsOriginal",
+      "RelativePath": "Car/3-1_s.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Car\\3-1_s.jpg"
     },
     {
       "Identity": "C:\\Users\\Hp\\Desktop\\Programming Learning Journey\\OrCarsOriginal\\OrCarsOriginal\\wwwroot\\css\\site.css",

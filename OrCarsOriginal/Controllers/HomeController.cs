@@ -36,5 +36,22 @@ namespace OrCarsOriginal.Controllers
 
             return View();
         }
+
+        // ref https://blog.elmah.io/upload-and-resize-an-image-with-asp-net-core-and-imagesharp/
+
+        public IActionResult Upload()
+        {
+            // ...
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Upload(IFormFile file)
+        {
+            using var image = Image.Load(file.OpenReadStream());
+            image.Mutate(x => x.Resize(150,150));
+            image.SaveAsJpeg("wwwroot/image.jpg");
+            return Ok(" File Uploaded ");
+        }
     }
 }
