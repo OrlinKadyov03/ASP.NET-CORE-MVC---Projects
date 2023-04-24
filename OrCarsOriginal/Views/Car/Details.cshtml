@@ -99,17 +99,17 @@
 <!-- Container for the image gallery -->
 <div class="container">
 
-    @ViewBag.NoOfImageFiles
+    @ViewBag.NoOfImageFiles Images
 
     <div id="mainImage">
         @for (int i = 1; i <= (int)ViewBag.NoOfImageFiles; i++)
         {
             <div class="mySlides">
-                <div class="numbertext">1 / 6</div>
+                <div class="numbertext">@i.ToString() / 6</div>
                 @{
                     string imageSrc = "/car/" + Model.Id.ToString() + "-"+ i.ToString()+"_m.jpg" ;
                 }
-                <img src="@imageSrc" style="width:100%" />
+                <img src="@imageSrc" alt="Car Image" style="width:100%" />
             </div>
 
         }
@@ -164,19 +164,19 @@
     <div id="mainImage">
         @for (int i = 1; i <= (int)ViewBag.NoOfImageFiles; i++)
         {
-            <div class="mySlides">
-                <div class="numbertext">1 / 6</div>
+            <div class="column">
+              
                 @{
-                    string imageSrc = "/car/" + Model.Id.ToString() + "-" + i.ToString() + "_m.jpg";
+                    string imageSrc = "/car/" + Model.Id.ToString() + "-" + i.ToString() + "_s.jpg";
                 }
-                <img src="@imageSrc" style="width:100%" />
+                <img class="demo-cursor" src="@imageSrc" style="width:100%" onclick="currentSlide(@i)" alt="Car Image @i" />
             </div>
 
         }
     </div>
 
     <!-- Thumbnail images -->
-    <div class="row">
+   @* <div class="row">
         <div class="column">
             <img class="demo cursor" src="/Car//3-1_m.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
         </div>
@@ -196,6 +196,7 @@
             <img class="demo cursor" src="/Car//3-6_m.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
         </div>
     </div>
+    *@
 </div>
 <div>
     <h4>Car</h4>

@@ -23,8 +23,8 @@ namespace OrCarsOriginal.Models
         public State SState { get; set; }
         [MaxLength(150)]
         public string ImageLink { get; set; }
-        [MaxLength(2000)]
-        [MinLength(30)]
+         //[MaxLength(2000)]
+         //[MinLength(30)]
         [StringLength(2000,MinimumLength = 30,ErrorMessage = "Length must be between 30 and 2000!" )]
         public string Description { get; set; }
         [Range(1914,2030)]
@@ -37,7 +37,8 @@ namespace OrCarsOriginal.Models
         public Body BBody { get; set; }
         [Required]
         public Colour Color { get; set; }
-
+        [DisplayFormat(DataFormatString = "{0:dd-MMM}")]
+        [Display(Name = "Posted On")]
         public DateTime InDate { get; set; }
 
     }

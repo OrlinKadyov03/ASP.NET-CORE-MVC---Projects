@@ -25,7 +25,40 @@ namespace OrCarsOriginal.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
+        public async Task<IActionResult> Index(string sortOrder,string searchString)
+        {
+            //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";       
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "date";
+            ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
+            ViewData["CurrentFilter"] = searchString;
+            var car = from s in _context.Car
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                car = car.Where(s => s.Description.Contains(searchString) ||
+                s.Model.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    car = car.OrderByDescending(s => s.InDate);
+                    break;
+                case "Date":
+                    car = car.OrderBy(s => s.InDate);
+                    break;
+                case "year_desc":
+                    car = car.OrderByDescending(s => s.Year);
+                    break;
+                case "year":
+                    car = car.OrderBy(s => s.Year);
+                    break;
+                default:
+                    car = car.OrderBy(s => s.Description);
+                    break;
+            }
+            return View(await car.AsNoTracking().ToListAsync());
+        }
         // GET: Car
         public async Task<IActionResult> Index()
         {
@@ -285,6 +318,8 @@ namespace OrCarsOriginal.Controllers
             {
                 return View("UnauthorizedAction");
             }
+           
+        }
+      
         }
     }
-}
