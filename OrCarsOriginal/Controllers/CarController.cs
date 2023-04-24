@@ -16,9 +16,9 @@ namespace OrCarsOriginal.Controllers
     public class CarController : Controller
     {
 
-        private static int maxNoImages = 1;
-        private static int maxImageWidth = 900;
-        private static int maxImageHeight = 600;
+        private static int maxNoImages = 6;
+        private static int maxImageWidth = 1200;
+        private static int maxImageHeight = 1000;
         private readonly ApplicationDbContext _context;
 
         public CarController(ApplicationDbContext context)
@@ -48,7 +48,11 @@ namespace OrCarsOriginal.Controllers
             {
                 return NotFound();
             }
+            //get number of the files in the folder
+            var path = Directory.GetCurrentDirectory() + "/wwwroot/Car";
 
+            ViewBag.NoOfImageFiles = Directory.GetFiles(path, car.Id.ToString() + "-*_m.jpg", SearchOption.TopDirectoryOnly).Length;
+            //end file count
             return View(car);
         }
 
@@ -247,16 +251,33 @@ namespace OrCarsOriginal.Controllers
                             return Ok("Image is too big (Image,Height)" + image.Width + ","
                                 + image.Height);
                         }
-                        image.Mutate(x => x.Resize(256, 256));
+                        image.Mutate(x => x.Resize(200, 120));
                         image.SaveAsJpeg("wwwroot/car/" + Id.ToString() + "-" + fileNumber.ToString() + "_s.jpg");
                         // end modification
                         await file.CopyToAsync(stream);
                     }
-                    ViewBag.Message += file.FileName + ", ";
-                }
+
+                        var filePathTwo = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,
+                              "temp.jpg");
+                        fileNameS.Add(file.FileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            // modifications ImageSharp
+                            using var image = Image.Load(file.OpenReadStream());
+                            if (image.Width > maxImageWidth || image.Height > maxImageHeight)
+                            {
+                                return Ok("Image is too big (Image,Height)" + image.Width + ","
+                                    + image.Height);
+                            }
+                            image.Mutate(x => x.Resize(1000, 600));
+                            image.SaveAsJpeg("wwwroot/car/" + Id.ToString() + "-" + fileNumber.ToString() + "_m.jpg");
+                            image.Dispose();
+                            // end modification
+                            // await file.CopyToAsync(stream);                          
+                        }
+                        ViewBag.Message += file.FileName + ", ";
+                    }
             }
-
-
             return View();
                 #endregion
             }
