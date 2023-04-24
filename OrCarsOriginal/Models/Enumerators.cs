@@ -6,7 +6,7 @@ namespace OrCarsOriginal.Models
     {
         public enum CarBrand : byte
         {
-            Bmw,
+            Bmw = 1,
             Mercedes,
             VW,
             Audi,

@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using OrCarsOriginal.Data;
 using OrCarsOriginal.Models;
+using static OrCarsOriginal.Models.Enumerators;
 
 namespace OrCarsOriginal.Controllers
 {
@@ -26,14 +27,26 @@ namespace OrCarsOriginal.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<IActionResult> Index(string sortOrder,string searchString)
+        public async Task<IActionResult> Index(string sortOrder,string searchString,CarBrand brandFilter)
         {
             //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";       
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "date";
             ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
             ViewData["CurrentFilter"] = searchString;
-            var car = from s in _context.Car
-                           select s;
+            
+
+            IQueryable<Car> car;
+            if ((int)brandFilter > 0)
+            {
+                car = from s in _context.Car
+                      where (s.CBrand.Equals(brandFilter))
+                      select s;
+            }
+            else
+            {
+                car = from s in _context.Car
+                      select s;
+            }
             if (!String.IsNullOrEmpty(searchString))
             {
                 car = car.Where(s => s.Description.Contains(searchString) ||
