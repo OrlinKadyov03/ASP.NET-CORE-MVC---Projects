@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrCarsOriginal.Data;
 
@@ -11,9 +12,10 @@ using OrCarsOriginal.Data;
 namespace OrCarsOriginal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230425002456_InitialPrice")]
+    partial class InitialPrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,26 +234,8 @@ namespace OrCarsOriginal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("AC")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AntiLockBraking")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("AntiTheft")
-                        .HasColumnType("bit");
-
-                    b.Property<byte>("Audio")
-                        .HasColumnType("tinyint");
-
                     b.Property<byte>("BBody")
                         .HasColumnType("tinyint");
-
-                    b.Property<bool>("BrakeAssist")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("BrakeEBFC")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Brand")
                         .HasColumnType("nvarchar(max)");
@@ -259,16 +243,7 @@ namespace OrCarsOriginal.Migrations
                     b.Property<byte>("CBrand")
                         .HasColumnType("tinyint");
 
-                    b.Property<bool>("CentralLocking")
-                        .HasColumnType("bit");
-
                     b.Property<byte>("Color")
-                        .HasColumnType("tinyint");
-
-                    b.Property<bool>("CruiseControl")
-                        .HasColumnType("bit");
-
-                    b.Property<byte>("Cylinders")
                         .HasColumnType("tinyint");
 
                     b.Property<string>("Description")
@@ -276,26 +251,14 @@ namespace OrCarsOriginal.Migrations
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
 
-                    b.Property<bool>("DualFrontAirbags")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("EngineImmobiliser")
-                        .HasColumnType("bit");
-
                     b.Property<int>("EngineSize")
                         .HasColumnType("int");
-
-                    b.Property<bool>("FrontPowerWindows")
-                        .HasColumnType("bit");
 
                     b.Property<byte>("Fuel")
                         .HasColumnType("tinyint");
 
                     b.Property<byte>("Gear")
                         .HasColumnType("tinyint");
-
-                    b.Property<bool>("HeadAirbags")
-                        .HasColumnType("bit");
 
                     b.Property<int>("HorsePower")
                         .HasColumnType("int");
@@ -311,64 +274,27 @@ namespace OrCarsOriginal.Migrations
                     b.Property<int>("Km")
                         .HasColumnType("int");
 
-                    b.Property<bool>("MirrorIndicators")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("MultiFunctionScreen")
-                        .HasColumnType("bit");
-
                     b.Property<byte>("NewOrUsed")
                         .HasColumnType("tinyint");
-
-                    b.Property<bool>("PSteering")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("PowerMirrors")
-                        .HasColumnType("bit");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<bool>("RearPowerWindows")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("RemoteKey")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ReversingCamera")
-                        .HasColumnType("bit");
-
                     b.Property<byte>("SState")
                         .HasColumnType("tinyint");
-
-                    b.Property<bool>("SideFrontAirbags")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Telephone")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<bool>("TractionControlSystem")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("TripComputer")
-                        .HasColumnType("bit");
-
                     b.Property<string>("UploadedBy")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Variant")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("VehicleStabilityControl")
-                        .HasColumnType("bit");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrCarsOriginal.Data;
 
@@ -11,9 +12,10 @@ using OrCarsOriginal.Data;
 namespace OrCarsOriginal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230425214300_InitialInteriorFeatures")]
+    partial class InitialInteriorFeatures
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,14 +237,8 @@ namespace OrCarsOriginal.Migrations
                     b.Property<bool>("AC")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("AntiLockBraking")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("AntiTheft")
                         .HasColumnType("bit");
-
-                    b.Property<byte>("Audio")
-                        .HasColumnType("tinyint");
 
                     b.Property<byte>("BBody")
                         .HasColumnType("tinyint");
@@ -268,16 +264,10 @@ namespace OrCarsOriginal.Migrations
                     b.Property<bool>("CruiseControl")
                         .HasColumnType("bit");
 
-                    b.Property<byte>("Cylinders")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(2000)
                         .HasColumnType("nvarchar(2000)");
-
-                    b.Property<bool>("DualFrontAirbags")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("EngineImmobiliser")
                         .HasColumnType("bit");
@@ -324,9 +314,6 @@ namespace OrCarsOriginal.Migrations
                     b.Property<byte>("NewOrUsed")
                         .HasColumnType("tinyint");
 
-                    b.Property<bool>("PSteering")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("PowerMirrors")
                         .HasColumnType("bit");
 
@@ -360,10 +347,6 @@ namespace OrCarsOriginal.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UploadedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Variant")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

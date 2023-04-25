@@ -4,6 +4,12 @@ namespace OrCarsOriginal.Models
 {
     public class Enumerators
     {
+
+        public enum Audio : byte
+        {
+            Radio,
+            CDPlayerAndRadio
+        }
         public enum CarBrand : byte
         {
             Bmw = 1,

@@ -56,6 +56,12 @@
                 </a>
                 </a>
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                 Image 
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -85,6 +91,9 @@
             <td>
                     @Html.DisplayFor(modelItem => item.InDate)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
             <td>
                     @{
                         string imageSrc = "/car/" + item.Id + "-1_s.jpg";

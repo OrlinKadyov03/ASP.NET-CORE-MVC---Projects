@@ -12,16 +12,24 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
-                <span asp-validation-for="Brand" class="text-danger"></span>
+                <label asp-for="CBrand" class="control-label"></label>
+                <select asp-for="CBrand" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.CarBrand>()">
+                    <option selected="selected" value="">Select brand</option>
+                </select>
+                @* <select asp-for="CBrand" class="form-control"></select>*@
+                <span asp-validation-for="CBrand" class="text-danger"></span>
             </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div> 
             <div class="form-group">
                 <label asp-for="Model" class="control-label"></label>
                 <input asp-for="Model" class="form-control" />
                 <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HorsePower" class="control-label"></label>
@@ -34,6 +42,89 @@
                 <span asp-validation-for="UploadedBy" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Telephone" class="control-label"></label>
+                <input asp-for="Telephone" class="form-control" />
+                <span asp-validation-for="Telephone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SState" class="control-label"></label>
+                <select asp-for="SState" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.State>()">
+                    <option selected="selected" value="">Select state</option>
+                </select>
+               @* <select asp-for="SState" class="form-control"></select> *@
+                <span asp-validation-for="SState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageLink" class="control-label"></label>
+                <input asp-for="ImageLink" class="form-control" />
+                <span asp-validation-for="ImageLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gear" class="control-label"></label>
+                <select asp-for="Gear" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Gears>()">
+                    <option selected="selected" value="">Select gear</option>
+                </select>
+                @*<select asp-for="Gear" class="form-control"></select>*@
+                <span asp-validation-for="Gear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fuel" class="control-label"></label>
+                <select asp-for="Fuel" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Fuels>()">
+                    <option selected="selected" value="">Select fuel</option>
+                </select>
+              @*  <select asp-for="Fuel" class="form-control"></select> *@
+                <span asp-validation-for="Fuel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Km" class="control-label"></label>
+                <input asp-for="Km" class="form-control" />
+                <span asp-validation-for="Km" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewOrUsed" class="control-label"></label>
+                <select asp-for="NewOrUsed" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.NewUsed>()">
+                    <option selected="selected" value="">Select type</option>
+                </select>
+                @*<select asp-for="NewOrUsed" class="form-control"></select>*@
+                <span asp-validation-for="NewOrUsed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineSize" class="control-label"></label>
+                <input asp-for="EngineSize" class="form-control" />
+                <span asp-validation-for="EngineSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BBody" class="control-label"></label>
+                <select asp-for="BBody" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Body>()">
+                    <option selected="selected" value="">Select body</option>
+                </select>
+               @* <select asp-for="BBody" class="form-control"></select> *@
+                <span asp-validation-for="BBody" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <select asp-for="Color" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Colour>()">
+                    <option selected="selected" value="">Select color</option>
+                </select>
+                @*<select asp-for="Color" class="form-control"></select>*@
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InDate" class="control-label"></label>
+                <input asp-for="InDate" class="form-control" />
+                <span asp-validation-for="InDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -44,6 +135,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

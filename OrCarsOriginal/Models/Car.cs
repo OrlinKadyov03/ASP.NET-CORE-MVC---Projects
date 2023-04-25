@@ -40,6 +40,51 @@ namespace OrCarsOriginal.Models
         [DisplayFormat(DataFormatString = "{0:dd-MMM}")]
         [Display(Name = "Posted On")]
         public DateTime InDate { get; set; }
+        public int Price { get; set; }
+        public string Variant { get; set; }
+        public byte Cylinders { get; set; }
+        public Audio Audio { get; set; }
+        public bool PSteering { get; set; }
+        public bool DualFrontAirbags { get; set; }
+        public bool AntiLockBraking { get; set; }
+        public bool AC { get; set; }
+        public bool AntiTheft { get; set; }
+        public bool BrakeAssist { get; set; }
+        public bool CruiseControl { get; set; }
+
+        public bool CentralLocking { get; set; }
+        public bool RemoteKey { get; set; }
+        public bool BrakeEBFC { get; set; }
+        public bool HeadAirbags { get; set; }
+        public bool EngineImmobiliser { get; set; }
+        public bool MultiFunctionScreen { get; set; }
+        public bool PowerMirrors { get; set; }
+        public bool MirrorIndicators { get; set; }
+        public bool FrontPowerWindows { get; set; }
+        public bool RearPowerWindows { get; set; }
+        public bool ReversingCamera { get; set; }
+        public bool SideFrontAirbags { get; set; }
+        public bool TripComputer { get; set; }
+        public bool TractionControlSystem { get; set; }
+        public bool VehicleStabilityControl { get; set; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

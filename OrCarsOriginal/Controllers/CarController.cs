@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 using OrCarsOriginal.Data;
 using OrCarsOriginal.Models;
 using static OrCarsOriginal.Models.Enumerators;
@@ -27,13 +20,13 @@ namespace OrCarsOriginal.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<IActionResult> Index(string sortOrder,string searchString,CarBrand brandFilter)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, CarBrand brandFilter)
         {
             //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";       
             ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "date";
             ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
             ViewData["CurrentFilter"] = searchString;
-            
+
 
             IQueryable<Car> car;
             if ((int)brandFilter > 0)
@@ -115,7 +108,7 @@ namespace OrCarsOriginal.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Brand,Model,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate")] Car car)
+        public async Task<IActionResult> Create([Bind("Id,Brand,Model,Price,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate,PSteering,DualFrontAirbags,AntiLockBraking,AC,AntiTheft,BrakeAssist,CruiseControl,CentralLocking,RemoteKey,BrakeEBFC,HeadAirbags,EngineImmobiliser,MultiFunctionScreen,PowerMirrors,MirrorIndicators,FrontPowerWindows,RearPowerWindows,ReversingCamera,SideFrontAirbags,TripComputer,TractionControlSystem,VehicleStabilityControl")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -150,7 +143,7 @@ namespace OrCarsOriginal.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Price,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate,PSteering,DualFrontAirbags,AntiLockBraking,AC,AntiTheft,BrakeAssist,CruiseControl,CentralLocking,RemoteKey,BrakeEBFC,HeadAirbags,EngineImmobiliser,MultiFunctionScreen,PowerMirrors,MirrorIndicators,FrontPowerWindows,RearPowerWindows,ReversingCamera,SideFrontAirbags,TripComputer,TractionControlSystem,VehicleStabilityControl")] Car car)
         {
             if (id != car.Id)
             {
@@ -269,39 +262,39 @@ namespace OrCarsOriginal.Controllers
             //allow upload only to uploaded user
             if (car.UploadedBy.Equals(User.Identity.Name))
             {
-              
-           
-            #region upload
-            var fileSize = files.Sum(m => m.Length);
-            var fileNameS = new List<string>();
 
 
-            ViewBag.Message = " Files uploaded " ;
+                #region upload
+                var fileSize = files.Sum(m => m.Length);
+                var fileNameS = new List<string>();
 
-            int fileNumber = 0;
-            foreach (var file in files)
-            {
-                if (fileNumber < maxNoImages)
+
+                ViewBag.Message = " Files uploaded ";
+
+                int fileNumber = 0;
+                foreach (var file in files)
                 {
-                    fileNumber++;
-                    string imageFolder = "\\wwwroot\\Car";
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,
-                         Id.ToString() + "-" + fileNumber.ToString() + ".jpg");
-                    fileNameS.Add(file.FileName);
-                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    if (fileNumber < maxNoImages)
                     {
-                        // modifications ImageSharp
-                        using var image = Image.Load(file.OpenReadStream());
-                        if (image.Width > maxImageWidth || image.Height > maxImageHeight)
+                        fileNumber++;
+                        string imageFolder = "\\wwwroot\\Car";
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,
+                             Id.ToString() + "-" + fileNumber.ToString() + ".jpg");
+                        fileNameS.Add(file.FileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
                         {
-                            return Ok("Image is too big (Image,Height)" + image.Width + ","
-                                + image.Height);
+                            // modifications ImageSharp
+                            using var image = Image.Load(file.OpenReadStream());
+                            if (image.Width > maxImageWidth || image.Height > maxImageHeight)
+                            {
+                                return Ok("Image is too big (Image,Height)" + image.Width + ","
+                                    + image.Height);
+                            }
+                            image.Mutate(x => x.Resize(200, 120));
+                            image.SaveAsJpeg("wwwroot/car/" + Id.ToString() + "-" + fileNumber.ToString() + "_s.jpg");
+                            // end modification
+                            await file.CopyToAsync(stream);
                         }
-                        image.Mutate(x => x.Resize(200, 120));
-                        image.SaveAsJpeg("wwwroot/car/" + Id.ToString() + "-" + fileNumber.ToString() + "_s.jpg");
-                        // end modification
-                        await file.CopyToAsync(stream);
-                    }
 
                         var filePathTwo = Path.Combine(Directory.GetCurrentDirectory() + imageFolder,
                               "temp.jpg");
@@ -323,16 +316,16 @@ namespace OrCarsOriginal.Controllers
                         }
                         ViewBag.Message += file.FileName + ", ";
                     }
-            }
-            return View();
+                }
+                return View();
                 #endregion
             }
             else
             {
                 return View("UnauthorizedAction");
             }
-           
+
         }
-      
-        }
+
     }
+}

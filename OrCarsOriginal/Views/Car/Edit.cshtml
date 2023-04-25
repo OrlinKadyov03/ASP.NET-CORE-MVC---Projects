@@ -11,18 +11,24 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-          <div class="form-group">
-                <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
-                <span asp-validation-for="Brand" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="CBrand" class="control-label"></label>
+                <select asp-for="CBrand" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.CarBrand>()">
+                    <option selected="selected" value="">Select brand</option>
+                </select>
+                @* <select asp-for="CBrand" class="form-control"></select>*@
+                <span asp-validation-for="CBrand" class="text-danger"></span>
             </div>
-     
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Model" class="control-label"></label>
                 <input asp-for="Model" class="form-control" />
                 <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="HorsePower" class="control-label"></label>
@@ -40,19 +46,11 @@
                 <span asp-validation-for="Telephone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CBrand" class="control-label"></label>
-                <select asp-for="CBrand" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.CarBrand>()">
-                    <option selected="selected" value="">Select brand</option>
-                </select>
-                @*<select asp-for="CBrand" class="form-control"></select>*@
-                <span asp-validation-for="CBrand" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="SState" class="control-label"></label>
                 <select asp-for="SState" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.State>()">
                     <option selected="selected" value="">Select state</option>
                 </select>
-              @*  <select asp-for="SState" class="form-control"></select>*@
+                @* <select asp-for="SState" class="form-control"></select> *@
                 <span asp-validation-for="SState" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -75,7 +73,7 @@
                 <select asp-for="Gear" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Gears>()">
                     <option selected="selected" value="">Select gear</option>
                 </select>
-               @* <select asp-for="Gear" class="form-control"></select> *@
+                @*<select asp-for="Gear" class="form-control"></select>*@
                 <span asp-validation-for="Gear" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -83,7 +81,7 @@
                 <select asp-for="Fuel" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Fuels>()">
                     <option selected="selected" value="">Select fuel</option>
                 </select>
-              @*  <select asp-for="Fuel" class="form-control"></select> *@
+                @*  <select asp-for="Fuel" class="form-control"></select> *@
                 <span asp-validation-for="Fuel" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -106,10 +104,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="BBody" class="control-label"></label>
-                                <select asp-for="BBody" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Body>()">
+                <select asp-for="BBody" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Body>()">
                     <option selected="selected" value="">Select body</option>
                 </select>
-               @* <select asp-for="BBody" class="form-control"></select> *@
+                @* <select asp-for="BBody" class="form-control"></select> *@
                 <span asp-validation-for="BBody" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -125,8 +123,136 @@
                 <input asp-for="InDate" class="form-control" />
                 <span asp-validation-for="InDate" class="text-danger"></span>
             </div>
+
+            @*New Properties*@
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="Variant" class="control-label"></label>
+                <input asp-for="Variant" class="form-control" />
+                <span asp-validation-for="Variant" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cylinders" class="control-label"></label>
+                <input asp-for="Cylinders" class="form-control" />
+                <span asp-validation-for="Cylinders" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Audio" class="control-label"></label>
+                <select asp-for="Audio" class="form-control"></select>
+                <span asp-validation-for="Audio" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PSteering" /> @Html.DisplayNameFor(model => model.PSteering)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="DualFrontAirbags" /> @Html.DisplayNameFor(model => model.DualFrontAirbags)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AntiLockBraking" /> @Html.DisplayNameFor(model => model.AntiLockBraking)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AC" /> @Html.DisplayNameFor(model => model.AC)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AntiTheft" /> @Html.DisplayNameFor(model => model.AntiTheft)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BrakeAssist" /> @Html.DisplayNameFor(model => model.BrakeAssist)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CruiseControl" /> @Html.DisplayNameFor(model => model.CruiseControl)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CentralLocking" /> @Html.DisplayNameFor(model => model.CentralLocking)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RemoteKey" /> @Html.DisplayNameFor(model => model.RemoteKey)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BrakeEBFC" /> @Html.DisplayNameFor(model => model.BrakeEBFC)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HeadAirbags" /> @Html.DisplayNameFor(model => model.HeadAirbags)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EngineImmobiliser" /> @Html.DisplayNameFor(model => model.EngineImmobiliser)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MultiFunctionScreen" /> @Html.DisplayNameFor(model => model.MultiFunctionScreen)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="PowerMirrors" /> @Html.DisplayNameFor(model => model.PowerMirrors)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MirrorIndicators" /> @Html.DisplayNameFor(model => model.MirrorIndicators)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="FrontPowerWindows" /> @Html.DisplayNameFor(model => model.FrontPowerWindows)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="RearPowerWindows" /> @Html.DisplayNameFor(model => model.RearPowerWindows)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ReversingCamera" /> @Html.DisplayNameFor(model => model.ReversingCamera)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SideFrontAirbags" /> @Html.DisplayNameFor(model => model.SideFrontAirbags)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TripComputer" /> @Html.DisplayNameFor(model => model.TripComputer)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TractionControlSystem" /> @Html.DisplayNameFor(model => model.TractionControlSystem)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="VehicleStabilityControl" /> @Html.DisplayNameFor(model => model.VehicleStabilityControl)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
