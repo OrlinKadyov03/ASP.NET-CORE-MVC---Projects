@@ -18,8 +18,8 @@
                 Find by Description: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
                 <input type="submit" value="Search" class="btn btn-dark" /> |
 
-                <select name="brandFilter" asp-route-brandFilter="@ViewData["brandFilter"]" 
-                asp-items="@Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.CarBrand>()">
+                <select name="brandFilter" asp-route-brandFilter="@ViewData["brandFilter"]"
+                        asp-items="@Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.CarBrand>()">
                     <option selected="selected" value="">Select</option>
 
                 </select>
@@ -60,48 +60,49 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                 Image 
+                Image
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
                     @{
                         string text = ("/car/details/" + item.Id + "/" + item.Brand
-                        + "-" + item.Model + "-" +item.Color).
+                        + "-" + item.Model + "-" + item.Color).
                         Replace(' ', '-');
                     }
                     <a href="@text">@Html.DisplayFor(modelItem => item.CBrand)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UploadedBy)
-            </td>
-             <td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadedBy)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.InDate)
-            </td>
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
-            <td>
+                <td>
                     @{
                         string imageSrc = "/car/" + item.Id + "-1_s.jpg";
                     }
                     <img src="@imageSrc" />
-            </td>
-              
-        </tr>
-}
+                </td>
+
+            </tr>
+        }
     </tbody>
 </table>

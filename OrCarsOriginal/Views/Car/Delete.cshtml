@@ -121,7 +121,162 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.InDate)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Variant)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Variant)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cylinders)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cylinders)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Audio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Audio)
+        </dd>
+        </div>
+
     </dl>
+
+        <div>
+            <div class="form-group ">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.PSteering)
+                    @Html.DisplayFor(model => model.PSteering)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.DualFrontAirbags)
+                    @Html.DisplayFor(model => model.DualFrontAirbags)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.AntiLockBraking)
+                    @Html.DisplayFor(model => model.AntiLockBraking)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.AC)
+                    @Html.DisplayFor(model => model.AC)
+                </label>
+            </div>
+            <div class="form-group ">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.AntiTheft)
+                    @Html.DisplayFor(model => model.AntiTheft)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.BrakeAssist)
+                    @Html.DisplayFor(model => model.BrakeAssist)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.CruiseControl)
+                    @Html.DisplayFor(model => model.CruiseControl)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.CentralLocking)
+                    @Html.DisplayFor(model => model.CentralLocking)
+                </label>
+            </div>
+            <div class="form-group ">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.RemoteKey)
+                    @Html.DisplayFor(model => model.RemoteKey)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.BrakeEBFC)
+                    @Html.DisplayFor(model => model.BrakeEBFC)
+                </label>
+            </div>
+            <div class="form-group ">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.HeadAirbags)
+                    @Html.DisplayFor(model => model.HeadAirbags)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.EngineImmobiliser)
+                    @Html.DisplayFor(model => model.EngineImmobiliser)
+                </label>
+            </div>
+            <div class="form-group ">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.MultiFunctionScreen)
+                    @Html.DisplayFor(model => model.MultiFunctionScreen)
+                </label>
+            </div>
+            <div class="form-group ">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.PowerMirrors)
+                    @Html.DisplayFor(model => model.PowerMirrors)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.MirrorIndicators)
+                    @Html.DisplayFor(model => model.MirrorIndicators)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.FrontPowerWindows)
+                    @Html.DisplayFor(model => model.FrontPowerWindows)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.RearPowerWindows)
+                    @Html.DisplayFor(model => model.RearPowerWindows)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.ReversingCamera)
+                    @Html.DisplayFor(model => model.ReversingCamera)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.SideFrontAirbags)
+                    @Html.DisplayFor(model => model.SideFrontAirbags)
+                </label>
+            </div>
+            <div class="form-group">
+
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.TripComputer)
+                    @Html.DisplayFor(model => model.TripComputer)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.TractionControlSystem)
+                    @Html.DisplayFor(model => model.TractionControlSystem)
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.VehicleStabilityControl)
+                    @Html.DisplayFor(model => model.VehicleStabilityControl)
+                </label>
+            </div>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />

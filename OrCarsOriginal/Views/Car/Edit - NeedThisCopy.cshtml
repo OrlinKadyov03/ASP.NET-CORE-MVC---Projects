@@ -1,5 +1,4 @@
 ﻿@model OrCarsOriginal.Models.Car
-
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,14 +11,12 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CBrand" class="control-label"></label>
                 <select asp-for="CBrand" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.CarBrand>()">
                     <option selected="selected" value="">Select brand</option>
                 </select>
-                    @* <select asp-for="CBrand" class="form-control"></select>*@
+                @* <select asp-for="CBrand" class="form-control"></select>*@
                 <span asp-validation-for="CBrand" class="text-danger"></span>
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -53,7 +50,7 @@
                 <select asp-for="SState" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.State>()">
                     <option selected="selected" value="">Select state</option>
                 </select>
-                    @* <select asp-for="SState" class="form-control"></select> *@
+                @* <select asp-for="SState" class="form-control"></select> *@
                 <span asp-validation-for="SState" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -76,7 +73,7 @@
                 <select asp-for="Gear" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Gears>()">
                     <option selected="selected" value="">Select gear</option>
                 </select>
-                    @*<select asp-for="Gear" class="form-control"></select>*@
+                @*<select asp-for="Gear" class="form-control"></select>*@
                 <span asp-validation-for="Gear" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -84,7 +81,7 @@
                 <select asp-for="Fuel" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Fuels>()">
                     <option selected="selected" value="">Select fuel</option>
                 </select>
-                    @*  <select asp-for="Fuel" class="form-control"></select> *@
+                @*  <select asp-for="Fuel" class="form-control"></select> *@
                 <span asp-validation-for="Fuel" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -97,7 +94,7 @@
                 <select asp-for="NewOrUsed" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.NewUsed>()">
                     <option selected="selected" value="">Select type</option>
                 </select>
-                    @*<select asp-for="NewOrUsed" class="form-control"></select>*@
+                @*<select asp-for="NewOrUsed" class="form-control"></select>*@
                 <span asp-validation-for="NewOrUsed" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -110,7 +107,7 @@
                 <select asp-for="BBody" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Body>()">
                     <option selected="selected" value="">Select body</option>
                 </select>
-                    @* <select asp-for="BBody" class="form-control"></select> *@
+                @* <select asp-for="BBody" class="form-control"></select> *@
                 <span asp-validation-for="BBody" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -118,7 +115,7 @@
                 <select asp-for="Color" asp-items="Html.GetEnumSelectList<OrCarsOriginal.Models.Enumerators.Colour>()">
                     <option selected="selected" value="">Select color</option>
                 </select>
-                    @*<select asp-for="Color" class="form-control"></select>*@
+                @*<select asp-for="Color" class="form-control"></select>*@
                 <span asp-validation-for="Color" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -127,7 +124,7 @@
                 <span asp-validation-for="InDate" class="text-danger"></span>
             </div>
 
-                @*New Properties*@
+            @*New Properties*@
 
             <div class="form-group">
                 <label asp-for="Variant" class="control-label"></label>

@@ -19,14 +19,14 @@ namespace OrCarsOriginal.Controllers
         {
             _context = context;
         }
+
         [HttpGet]
         public async Task<IActionResult> Index(string sortOrder, string searchString, CarBrand brandFilter)
         {
             //ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";       
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "date";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
             ViewData["YearSortParm"] = sortOrder == "year" ? "year_desc" : "year";
             ViewData["CurrentFilter"] = searchString;
-
 
             IQueryable<Car> car;
             if ((int)brandFilter > 0)
@@ -108,7 +108,7 @@ namespace OrCarsOriginal.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Brand,Model,Price,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate,PSteering,DualFrontAirbags,AntiLockBraking,AC,AntiTheft,BrakeAssist,CruiseControl,CentralLocking,RemoteKey,BrakeEBFC,HeadAirbags,EngineImmobiliser,MultiFunctionScreen,PowerMirrors,MirrorIndicators,FrontPowerWindows,RearPowerWindows,ReversingCamera,SideFrontAirbags,TripComputer,TractionControlSystem,VehicleStabilityControl")] Car car)
+        public async Task<IActionResult> Create([Bind("Id,Brand,Model,Price,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate,Variant,Cylinders,Audio,PSteering,DualFrontAirbags,AntiLockBraking,AC,AntiTheft,BrakeAssist,CruiseControl,CentralLocking,RemoteKey,BrakeEBFC,HeadAirbags,EngineImmobiliser,MultiFunctionScreen,PowerMirrors,MirrorIndicators,FrontPowerWindows,RearPowerWindows,ReversingCamera,SideFrontAirbags,TripComputer,TractionControlSystem,VehicleStabilityControl")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -143,7 +143,7 @@ namespace OrCarsOriginal.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Price,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate,PSteering,DualFrontAirbags,AntiLockBraking,AC,AntiTheft,BrakeAssist,CruiseControl,CentralLocking,RemoteKey,BrakeEBFC,HeadAirbags,EngineImmobiliser,MultiFunctionScreen,PowerMirrors,MirrorIndicators,FrontPowerWindows,RearPowerWindows,ReversingCamera,SideFrontAirbags,TripComputer,TractionControlSystem,VehicleStabilityControl")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Price,HorsePower,UploadedBy,Telephone,CBrand,SState,ImageLink,Description,Year,Gear,Fuel,Km,NewOrUsed,EngineSize,BBody,Color,InDate,Variant,Cylinders,Audio,PSteering,DualFrontAirbags,AntiLockBraking,AC,AntiTheft,BrakeAssist,CruiseControl,CentralLocking,RemoteKey,BrakeEBFC,HeadAirbags,EngineImmobiliser,MultiFunctionScreen,PowerMirrors,MirrorIndicators,FrontPowerWindows,RearPowerWindows,ReversingCamera,SideFrontAirbags,TripComputer,TractionControlSystem,VehicleStabilityControl")] Car car)
         {
             if (id != car.Id)
             {

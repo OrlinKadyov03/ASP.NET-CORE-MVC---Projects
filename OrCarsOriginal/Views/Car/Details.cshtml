@@ -107,7 +107,7 @@
             <div class="mySlides">
                 <div class="numbertext">@i.ToString() / 6</div>
                 @{
-                    string imageSrc = "/car/" + Model.Id.ToString() + "-"+ i.ToString()+"_m.jpg" ;
+                    string imageSrc = "/car/" + Model.Id.ToString() + "-" + i.ToString() + "_m.jpg";
                 }
                 <img src="@imageSrc" alt="Car Image" style="width:100%" />
             </div>
@@ -117,38 +117,38 @@
 
 
     <!-- Full-width images with number text -->
-   @* <div class="mySlides">
-        <div class="numbertext">1 / 6</div>
-            @{ string imageSrc = "/car/" + Model.Id.ToString() + "-1_m.jpg";  }
-            <img  src="@imageSrc" style="width:100%"/>
-    </div>
-    
-
-    <div class="mySlides">
-        <div class="numbertext">2 / 6</div>
-        <img src="/Car//3-2_m.jpg" style="width:100%">
+    @* <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    @{ string imageSrc = "/car/" + Model.Id.ToString() + "-1_m.jpg";  }
+    <img  src="@imageSrc" style="width:100%"/>
     </div>
 
+
     <div class="mySlides">
-        <div class="numbertext">3 / 6</div>
-        <img src="/Car//3-3_m.jpg" style="width:100%">
+    <div class="numbertext">2 / 6</div>
+    <img src="/Car//3-2_m.jpg" style="width:100%">
     </div>
 
     <div class="mySlides">
-        <div class="numbertext">4 / 6</div>
-        <img src="/Car//3-4_m.jpg" style="width:100%">
+    <div class="numbertext">3 / 6</div>
+    <img src="/Car//3-3_m.jpg" style="width:100%">
     </div>
 
     <div class="mySlides">
-        <div class="numbertext">5 / 6</div>
-        <img src="/Car//3-5_m.jpg" style="width:100%">
+    <div class="numbertext">4 / 6</div>
+    <img src="/Car//3-4_m.jpg" style="width:100%">
     </div>
 
     <div class="mySlides">
-        <div class="numbertext">6 / 6</div>
-        <img src="/Car//3-6_m.jpg" style="width:100%">
+    <div class="numbertext">5 / 6</div>
+    <img src="/Car//3-5_m.jpg" style="width:100%">
     </div>
-    
+
+    <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img src="/Car//3-6_m.jpg" style="width:100%">
+    </div>
+
 
     <!-- Next and previous buttons -->
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -156,7 +156,7 @@
 
     <!-- Image text -->
     <div class="caption-container">
-        <p id="caption"></p>
+    <p id="caption"></p>
     </div>
     *@
 
@@ -165,7 +165,7 @@
         @for (int i = 1; i <= (int)ViewBag.NoOfImageFiles; i++)
         {
             <div class="column">
-              
+
                 @{
                     string imageSrc = "/car/" + Model.Id.ToString() + "-" + i.ToString() + "_s.jpg";
                 }
@@ -176,25 +176,25 @@
     </div>
 
     <!-- Thumbnail images -->
-   @* <div class="row">
-        <div class="column">
-            <img class="demo cursor" src="/Car//3-1_m.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="/Car//3-2_m.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="/Car//3-3_m.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="/Car//3-4_m.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="/Car//3-5_m.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
-        </div>
-        <div class="column">
-            <img class="demo cursor" src="/Car//3-6_m.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
-        </div>
+    @* <div class="row">
+    <div class="column">
+    <img class="demo cursor" src="/Car//3-1_m.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+    <img class="demo cursor" src="/Car//3-2_m.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+    <img class="demo cursor" src="/Car//3-3_m.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+    <img class="demo cursor" src="/Car//3-4_m.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+    <img class="demo cursor" src="/Car//3-5_m.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+    <img class="demo cursor" src="/Car//3-6_m.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
     </div>
     *@
 </div>
@@ -202,16 +202,16 @@
     <h4>Car</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-          <b> Brand </b>
+        <dt class="col-sm-2">
+            <b> Brand </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CBrand)
         </dd>
-        <dt class = "col-sm-2">
-           <b> Model </b>
+        <dt class="col-sm-2">
+            <b> Model </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Model)
         </dd>
         <dt class="col-sm-2">
@@ -220,102 +220,255 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Price)
         </dd>
-        <dt class = "col-sm-2">
-          <b> HorsePower </b>
+        <dt class="col-sm-2">
+            <b> HorsePower </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.HorsePower)
         </dd>
-        <dt class = "col-sm-2">
-           <b> UploadedBy </b>
+        <dt class="col-sm-2">
+            <b> UploadedBy </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UploadedBy)
         </dd>
-        <dt class = "col-sm-2">
-           <b> PhoneNumber </b>
+        <dt class="col-sm-2">
+            <b> PhoneNumber </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Telephone)
         </dd>
-        <dt class = "col-sm-2">
-           <b> State </b>
+        <dt class="col-sm-2">
+            <b> State </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SState)
         </dd>
-      @*  <dt class = "col-sm-2">
-            @{ string imageSrc = "/car/" + Model.Id + "-1_m.jpg";  }
-            <img  src="@imageSrc"/> *@
+        @*  <dt class = "col-sm-2">
+        @{ string imageSrc = "/car/" + Model.Id + "-1_m.jpg";  }
+        <img  src="@imageSrc"/> *@
 
         @*<dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageLink)
+        @Html.DisplayFor(model => model.ImageLink)
         </dd>
         *@
-        <dt class = "col-sm-2">
-          <b> Description </b>
+        <dt class="col-sm-2">
+            <b> Description </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
-           <b> Year </b>
+        <dt class="col-sm-2">
+            <b> Year </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Year)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             <b> Gear </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Gear)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             <b> Fuel </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Fuel)
         </dd>
-        <dt class = "col-sm-2">
-           <b> Mileage </b>
+        <dt class="col-sm-2">
+            <b> Mileage </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Km)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             <b> New Or Used </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NewOrUsed)
         </dd>
-        <dt class = "col-sm-2">
-          <b>  Engine Size  </b>
+        <dt class="col-sm-2">
+            <b>  Engine Size  </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EngineSize)
         </dd>
-        <dt class = "col-sm-2">
-           <b> Type of body </b>
+        <dt class="col-sm-2">
+            <b> Type of body </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.BBody)
         </dd>
-        <dt class = "col-sm-2">
-           <b> Color </b>
+        <dt class="col-sm-2">
+            <b> Color </b>
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Color)
         </dd>
         <dt class="col-sm-2">
-           <b> Data </b>
+            <b> Data </b>
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.InDate)
         </dd>
+                <dt class="col-sm-2">
+            <b> Variant </b>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Variant)
+        </dd>
+                <dt class="col-sm-2">
+            <b> Cylinders </b>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cylinders)
+        </dd>
+                <dt class="col-sm-2">
+            <b> Audio </b>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Audio)
+        </dd>
+
+
     </dl>
 </div>
 <div>
-   | <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <div class="form-group ">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.PSteering)
+            @Html.DisplayFor(model => model.PSteering)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.DualFrontAirbags)
+            @Html.DisplayFor(model => model.DualFrontAirbags)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.AntiLockBraking)
+            @Html.DisplayFor(model => model.AntiLockBraking)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.AC)
+            @Html.DisplayFor(model => model.AC)
+        </label>
+    </div>
+    <div class="form-group ">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.AntiTheft)
+            @Html.DisplayFor(model => model.AntiTheft)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.BrakeAssist)
+            @Html.DisplayFor(model => model.BrakeAssist)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.CruiseControl)
+            @Html.DisplayFor(model => model.CruiseControl)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.CentralLocking)
+            @Html.DisplayFor(model => model.CentralLocking)
+        </label>
+    </div>
+    <div class="form-group ">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.RemoteKey)
+            @Html.DisplayFor(model => model.RemoteKey)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.BrakeEBFC)
+            @Html.DisplayFor(model => model.BrakeEBFC)
+        </label>
+    </div>
+    <div class="form-group ">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.HeadAirbags)
+            @Html.DisplayFor(model => model.HeadAirbags)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.EngineImmobiliser)
+            @Html.DisplayFor(model => model.EngineImmobiliser)
+        </label>
+    </div>
+    <div class="form-group ">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.MultiFunctionScreen)
+            @Html.DisplayFor(model => model.MultiFunctionScreen)
+        </label>
+    </div>
+    <div class="form-group ">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.PowerMirrors)
+            @Html.DisplayFor(model => model.PowerMirrors)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.MirrorIndicators)
+            @Html.DisplayFor(model => model.MirrorIndicators)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.FrontPowerWindows)
+            @Html.DisplayFor(model => model.FrontPowerWindows)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.RearPowerWindows)
+            @Html.DisplayFor(model => model.RearPowerWindows)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.ReversingCamera)
+            @Html.DisplayFor(model => model.ReversingCamera)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.SideFrontAirbags)
+            @Html.DisplayFor(model => model.SideFrontAirbags)
+        </label>
+    </div>
+    <div class="form-group">
+
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.TripComputer)
+            @Html.DisplayFor(model => model.TripComputer)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.TractionControlSystem)
+            @Html.DisplayFor(model => model.TractionControlSystem)
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            @Html.DisplayNameFor(model => model.VehicleStabilityControl)
+            @Html.DisplayFor(model => model.VehicleStabilityControl)
+        </label>
+    </div>
+    | <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a> |
     <a asp-action="FileUploadPage" asp-route-id="@Model?.Id">Upload Photo</a> |
 
