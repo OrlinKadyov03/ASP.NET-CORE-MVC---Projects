@@ -5,20 +5,20 @@ namespace AppMVC.Controllers
 {
     public class HotelManagementController : Controller
     {
-        private static List<Manage> person = new List<Manage>();
+        private static List<Person> persons = new List<Person>();
         public IActionResult Index()
         {
-            return View(person);
+            return View(persons);
         }
         public IActionResult Create()
         {
-            var myPerson = new Manage();
+            var myPerson = new Person();
             return View(myPerson);
         }
 
-        public IActionResult CreatePerson(Manage manage)
+        public IActionResult CreatePerson(Person person)
         {
-            person.Add(manage);
+            persons.Add(person);
             return RedirectToAction(nameof(Index));
         }
     }
