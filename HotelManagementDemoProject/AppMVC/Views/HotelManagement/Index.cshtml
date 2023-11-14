@@ -1,4 +1,4 @@
-﻿@model AppMVC.Models.Manage
+﻿@model List<AppMVC.Models.Manage>
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,6 +10,9 @@
 
 <h1>Hotel Management App</h1>
 <p>Read the description, this application will simplify your life!</p>
-<h4>Name: @Model.Name</h4>
-<h3>Years: @Model.Age years old</h3>
-<h3>Id number: @Model.IdNum</h3>
+@foreach (var per in Model)
+{
+    <li>Name: @per.Name</li>
+    <li>Age: @per.Age</li>
+    <li>IdNum: @per.IdNum</li>
+}
