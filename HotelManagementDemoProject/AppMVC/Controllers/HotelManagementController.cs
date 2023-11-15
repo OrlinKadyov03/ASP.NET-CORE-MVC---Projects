@@ -21,5 +21,6 @@ namespace AppMVC.Controllers
             persons.Add(person);
             return RedirectToAction(nameof(Index));
         }
+
     }
 }
