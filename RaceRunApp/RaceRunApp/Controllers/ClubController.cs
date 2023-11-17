@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RaceRunApp.Data;
 using RaceRunApp.Models;
 
@@ -16,6 +17,12 @@ namespace RaceRunApp.Controllers
         {
             List<Club> clubs = _context.Clubs.ToList();
             return View(clubs);
+        }
+
+        public IActionResult Detail(int id)
+        {
+            Club club  = _context.Clubs.Include(a=>a.Address).FirstOrDefault(c=> c.Id == id);
+            return View(club);
         }
     }
 }
