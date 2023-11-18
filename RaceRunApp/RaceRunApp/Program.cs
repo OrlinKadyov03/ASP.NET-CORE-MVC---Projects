@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RaceRunApp.Data;
+using RaceRunApp.Interfaces;
+using RaceRunApp.Repository;
 
 namespace RaceRunApp
 {
@@ -11,6 +13,8 @@ namespace RaceRunApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IClubRepository, ClubRepository>();
+            builder.Services.AddScoped<IRaceRepository, RaceRepository>();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

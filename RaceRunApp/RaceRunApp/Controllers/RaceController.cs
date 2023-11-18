@@ -1,27 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RaceRunApp.Data;
+using RaceRunApp.Interfaces;
 using RaceRunApp.Models;
 
 namespace RaceRunApp.Controllers
 {
     public class RaceController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public RaceController(ApplicationDbContext context)
+        private readonly IRaceRepository _raceRepository;
+
+        public RaceController(IRaceRepository raceRepository)
         {
-            this._context = context;
+            this._raceRepository = raceRepository;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Race> races = _context.Races.ToList();
+            IEnumerable<Race> races = await _raceRepository.GetAll();
             return View(races);
         }
 
-        public IActionResult Detail(int id)
-        {
-            Race race = _context.Races.Include(a => a.Address).FirstOrDefault(r => r.Id == id);
-            return View(race);
-        }
+
+        //Race Repository
     }
 }
