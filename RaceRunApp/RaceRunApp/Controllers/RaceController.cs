@@ -20,6 +20,11 @@ namespace RaceRunApp.Controllers
             return View(races);
         }
 
+        public async Task<IActionResult> Detail(int id)
+        {
+            Race race = await _raceRepository.GetIdByAsync(id);
+            return View(race);
+        }
 
         //Race Repository
     }
