@@ -16,13 +16,13 @@ namespace RaceRunApp.Repository
         public bool Add(Race race)
         {
             _context.Add(race);
-            return true;
+            return Save();
         }
 
         public bool Delete(Race race)
         {
             _context.Remove(race);
-            return true;
+            return Save();
         }
 
         public async Task<IEnumerable<Race>> GetAll()
