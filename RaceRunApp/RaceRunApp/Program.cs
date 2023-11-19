@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using RaceRunApp.Data;
+using RaceRunApp.Helpers;
 using RaceRunApp.Interfaces;
 using RaceRunApp.Repository;
+using RaceRunApp.Services;
 
 namespace RaceRunApp
 {
@@ -15,6 +17,8 @@ namespace RaceRunApp
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IClubRepository, ClubRepository>();
             builder.Services.AddScoped<IRaceRepository, RaceRepository>();
+            builder.Services.AddScoped<IPhotoService, PhotoService>();
+            builder.Services.Configure < CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RaceRunApp.Data;
 using RaceRunApp.Interfaces;
 using RaceRunApp.Models;
+using RaceRunApp.ViewModels;
 
 namespace RaceRunApp.Controllers
 {
@@ -10,10 +11,12 @@ namespace RaceRunApp.Controllers
     {
 
         private readonly IClubRepository _clubRepository;
+        private readonly IPhotoService _photoService;
 
-        public ClubController(IClubRepository clubRepository)
+        public ClubController(IClubRepository clubRepository,IPhotoService photoService)
         {
             this._clubRepository = clubRepository;
+            this._photoService = photoService;
         }
         public async Task<IActionResult> Index()
         {
@@ -33,14 +36,33 @@ namespace RaceRunApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Club club)
+        public async Task<IActionResult> Create(CreateClubViewModel clubVM)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return View(club);
-            }
-            _clubRepository.Add(club);
+                var result = await _photoService.AddPhotoAsync(clubVM.Image);
+
+                var club = new Club
+                {
+                    Title = clubVM.Title,
+                    Description = clubVM.Description,
+                    Image = result.Url.ToString(),
+                    Address = new Address
+                    {
+                        Street = clubVM.Address.Street,
+                        City = clubVM.Address.City,
+                        State = clubVM.Address.State
+                    }
+                };
+              _clubRepository.Add(club);
             return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("","Photo upload failed");
+            }
+
+            return View(clubVM);
         }
     }
 }
