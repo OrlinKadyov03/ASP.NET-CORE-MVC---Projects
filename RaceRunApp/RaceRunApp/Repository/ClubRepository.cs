@@ -42,6 +42,12 @@ namespace RaceRunApp.Repository
             return await _context.Clubs.Include(i=>i.Address).FirstOrDefaultAsync(c => c.Id == id);
         }
 
+
+        public async Task<Club> GetIdByAsyncNoTracking(int id)
+        {
+            return await _context.Clubs.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();

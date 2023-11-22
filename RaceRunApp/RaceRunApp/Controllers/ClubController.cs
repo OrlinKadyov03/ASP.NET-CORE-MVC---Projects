@@ -4,6 +4,7 @@ using RaceRunApp.Data;
 using RaceRunApp.Interfaces;
 using RaceRunApp.Models;
 using RaceRunApp.ViewModels;
+using System.Diagnostics.Eventing.Reader;
 
 namespace RaceRunApp.Controllers
 {
@@ -81,5 +82,54 @@ namespace RaceRunApp.Controllers
 
             return View(clubVM);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditClubViewModel clubVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Failed to edit Club!");
+                return View("Edit", clubVM);
+            }
+
+            var userClub = await _clubRepository.GetIdByAsyncNoTracking(id);
+
+            if (userClub != null)
+            {
+                try
+                {
+                    await _photoService.DeletePhotoAsync(userClub.Image);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Could not delete the photo");
+                    return View(clubVM);
+                }
+                var photoResult = await _photoService.AddPhotoAsync(clubVM.Image);
+
+                var club = new Club
+                {
+                    Id = id,
+                    Title = clubVM.Title,
+                    Description = clubVM.Description,
+                    Image = photoResult.Url.ToString(),
+                    AddressId = clubVM.AddressId,
+                    Address = clubVM.Address
+                };
+
+                _clubRepository.Update(club);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(clubVM);
+            }
+
+          
+
+
+        }
     }
+
 }
