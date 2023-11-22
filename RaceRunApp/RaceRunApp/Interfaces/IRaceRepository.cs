@@ -6,6 +6,7 @@ namespace RaceRunApp.Interfaces
     {
         Task<IEnumerable<Race>> GetAll();
         Task<Race> GetIdByAsync(int id);
+        Task<Race> GetIdByAsyncNoTracking(int id);
         Task<IEnumerable<Race>> GetAllRacesByCity(string city);
         bool Add(Race race);
         bool Update(Race race);

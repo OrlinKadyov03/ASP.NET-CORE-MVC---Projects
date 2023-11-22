@@ -40,6 +40,12 @@ namespace RaceRunApp.Repository
            return await _context.Races.Include(i => i.Address).FirstOrDefaultAsync(r => r.Id == id);
         }
 
+
+        public async Task<Race> GetIdByAsyncNoTracking(int id)
+        {
+            return await _context.Races.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(r => r.Id == id);
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();

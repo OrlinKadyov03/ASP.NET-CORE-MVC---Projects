@@ -4,6 +4,7 @@ using RaceRunApp.Data;
 using RaceRunApp.Interfaces;
 using RaceRunApp.Models;
 using RaceRunApp.ViewModels;
+using System.Diagnostics.Eventing.Reader;
 
 namespace RaceRunApp.Controllers
 {
@@ -64,6 +65,67 @@ namespace RaceRunApp.Controllers
                ModelState.AddModelError("", "Failed to upload file!");
            }
            return View(raceVM);
+        }
+        public async Task<IActionResult> Edit(int id) 
+        {
+            var race = await _raceRepository.GetIdByAsync(id);
+            if (race == null) return View("Error");
+            var raceVM = new EditRaceViewModel
+            {
+                Title = race.Title,
+                Description = race.Description,
+                URL = race.Image,
+                AddressId = race.AddressId,
+                Address = race.Address,
+                RaceCategory = race.RaceCategory       
+            };
+
+            return View(raceVM);
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> Edit(int id,EditRaceViewModel raceVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Failed to edit race");
+                return View("Edit", raceVM);
+            }
+
+            var raceClub = await _raceRepository.GetIdByAsyncNoTracking(id);
+            if (raceClub != null)
+            {
+                try
+                {
+                    await _photoService.DeletePhotoAsync(raceClub.Image);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Failed to delete photo!");
+                    return View(raceVM);
+                }
+
+                var photoResult = await _photoService.AddPhotoAsync(raceVM.Image);
+
+                var race = new Race
+                {
+                    Id = id,
+                    Title = raceVM.Title,
+                    Description = raceVM.Description,
+                    Address = raceVM.Address,
+                    Image = photoResult.Uri.ToString(),
+                    AddressId = raceVM.AddressId,
+
+                };
+                _raceRepository.Update(race);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(raceVM);
+            }
         }
 
     }
