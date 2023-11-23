@@ -1,7 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RaceRunApp.Data;
 using RaceRunApp.Helpers;
 using RaceRunApp.Interfaces;
+using RaceRunApp.Models;
 using RaceRunApp.Repository;
 using RaceRunApp.Services;
 
@@ -9,7 +12,7 @@ namespace RaceRunApp
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -23,12 +26,19 @@ namespace RaceRunApp
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddIdentity<AppUser,IdentityRole>
+                ().AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
 
             var app = builder.Build();
 
             if(args.Length == 1 && args[0].ToLower() == "seeddata")
             {
-                Seed.SeedData(app);
+                await Seed.SeedUsersAndRolesAsync(app);
+                // Seed.SeedData(app);
             }
 
             // Configure the HTTP request pipeline.
