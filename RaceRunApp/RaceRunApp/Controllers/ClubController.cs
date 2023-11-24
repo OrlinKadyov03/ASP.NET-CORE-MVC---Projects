@@ -5,6 +5,7 @@ using RaceRunApp.Interfaces;
 using RaceRunApp.Models;
 using RaceRunApp.ViewModels;
 using System.Diagnostics.Eventing.Reader;
+using System.Security.Cryptography.X509Certificates;
 
 namespace RaceRunApp.Controllers
 {
@@ -126,10 +127,15 @@ namespace RaceRunApp.Controllers
                 return View(clubVM);
             }
 
-          
-
+            
 
         }
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+
     }
 
 }

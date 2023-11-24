@@ -127,6 +127,10 @@ namespace RaceRunApp.Controllers
                 return View(raceVM);
             }
         }
+        public IActionResult Delete()
+        {
+            return View();
+        }
 
     }
 }
