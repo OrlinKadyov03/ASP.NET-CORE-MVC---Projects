@@ -8,7 +8,7 @@ namespace RaceRunApp.Controllers
     public class DashboardController : Controller
     {
         private readonly IDashboardRepository _dashboardRepository;
-
+        // Explain
         public DashboardController(IDashboardRepository dashboardRepository)
         {
             this._dashboardRepository = dashboardRepository;
