@@ -17,5 +17,7 @@ namespace RaceRunApp.ViewModels
 
         public ClubCategory ClubCategory { get; set; }
 
+        public string AppUserId { get; set; }
+
     }
 }

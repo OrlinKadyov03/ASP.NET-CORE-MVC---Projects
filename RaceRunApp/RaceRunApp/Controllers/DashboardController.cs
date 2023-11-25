@@ -22,7 +22,7 @@ namespace RaceRunApp.Controllers
                 Races = userRaces,
                 Clubs = userClubs
             };
-            return View();
+            return View(userViewModel);
         }
     }
 }
