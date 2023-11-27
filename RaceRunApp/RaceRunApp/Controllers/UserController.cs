@@ -17,7 +17,7 @@ namespace RaceRunApp.Controllers
         {
             var users = await _userRepository.GetAllUsers();
             List<UserViewModel> result = new List<UserViewModel>();
-            foreach (var user in result) 
+            foreach (var user in users) 
             {
                 var userViewModel = new UserViewModel
                 {
@@ -30,6 +30,19 @@ namespace RaceRunApp.Controllers
                 
             }
             return View(result);
+        }
+
+        public async Task<IActionResult> Detail(string id) 
+        {
+            var user = await _userRepository.GetUserById(id);
+            var userDetailViewModel = new UserDetailViewModel()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Mileage=user.Mileage,
+                Pace=user.Pace
+            };
+            return View(userDetailViewModel);
         }
     }
 }
