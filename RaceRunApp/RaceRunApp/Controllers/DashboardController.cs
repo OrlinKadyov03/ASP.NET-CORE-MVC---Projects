@@ -24,5 +24,9 @@ namespace RaceRunApp.Controllers
             };
             return View(userViewModel);
         }
+        public async Task<IActionResult> EditUserProfile() 
+        {
+            return View();
+        }
     }
 }
