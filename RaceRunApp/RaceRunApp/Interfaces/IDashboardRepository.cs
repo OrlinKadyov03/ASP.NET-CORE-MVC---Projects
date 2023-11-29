@@ -6,5 +6,7 @@ namespace RaceRunApp.Interfaces
     {
         Task<List<Race>> GetAllUserRaces();
         Task<List<Club>> GetAllUserClubs();
+
+        Task<AppUser> GeUserById(string id);
     }
 }
