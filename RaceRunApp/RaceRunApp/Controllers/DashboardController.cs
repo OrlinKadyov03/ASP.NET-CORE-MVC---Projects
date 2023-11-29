@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Mvc;
 using RaceRunApp.Data;
 using RaceRunApp.Interfaces;
+using RaceRunApp.Models;
 using RaceRunApp.ViewModels;
 
 namespace RaceRunApp.Controllers
@@ -18,6 +20,17 @@ namespace RaceRunApp.Controllers
             this._dashboardRepository = dashboardRepository;
             this._httpContextAccessor = httpContextAccessor;
             this._photoService = photoService;
+        }
+
+        private void MapUserEdit(AppUser user,EditUserViewModel editVM,ImageUploadResult photoResult) 
+        {
+            user.Id = editVM.Id;
+            user.Pace = editVM.Pace;
+            user.Mileage = editVM.Mileage;
+            user.ProfileImageUrl = photoResult.Url.ToString();
+            user.City = editVM.City;
+            user.State = editVM.State;
+
         }
         public async Task<IActionResult> Index()
         {
@@ -50,6 +63,51 @@ namespace RaceRunApp.Controllers
 
             };
             return View(editUserViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUserProfile(EditUserViewModel editVM) 
+        {
+            if (!ModelState.IsValid) 
+            {
+                ModelState.AddModelError("", "Failed to edit");
+                return View("EditUserProfile", editVM);
+            }
+
+            var user = await _dashboardRepository.GetIdByNoTracking(editVM.Id);
+
+            if (user.ProfileImageUrl == "" || user.ProfileImageUrl == null) 
+            {
+                var photoResult = await _photoService.AddPhotoAsync(editVM.Image);
+
+                MapUserEdit(user,editVM, photoResult);
+
+                _dashboardRepository.Update(user);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                try
+                {
+                    await _photoService.DeletePhotoAsync(user.ProfileImageUrl);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Failed to delete photo");
+                    return View(editVM);
+                }
+
+                var photoResult = await _photoService.AddPhotoAsync(editVM.Image);
+
+                MapUserEdit(user, editVM, photoResult);
+
+                _dashboardRepository.Update(user);
+
+                return RedirectToAction("Index");
+
+
+            }
         }
     }
 }

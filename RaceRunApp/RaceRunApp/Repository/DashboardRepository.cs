@@ -1,4 +1,5 @@
-﻿using RaceRunApp.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RaceRunApp.Data;
 using RaceRunApp.Interfaces;
 using RaceRunApp.Models;
 
@@ -32,6 +33,24 @@ namespace RaceRunApp.Repository
         {
             return await _context.Users.FindAsync(id);
         }
+
+        public async Task<AppUser> GetIdByNoTracking(string id) 
+        {
+            return await _context.Users.Where(u => u.Id == id).AsNoTracking().FirstOrDefaultAsync();
+        }
+
+        public bool Update(AppUser user) 
+        {
+            _context.Users.Update(user);
+            return Save();
+        }
+
+        public bool Save() 
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false; 
+        }
+
 
     }
 }

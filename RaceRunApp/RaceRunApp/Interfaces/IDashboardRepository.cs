@@ -8,5 +8,11 @@ namespace RaceRunApp.Interfaces
         Task<List<Club>> GetAllUserClubs();
 
         Task<AppUser> GeUserById(string id);
+
+        Task<AppUser> GetIdByNoTracking(string id);
+
+        bool Update(AppUser user);
+
+        bool Save();
     }
 }
