@@ -1,5 +1,4 @@
 # ASP.NET-CORE-MVC---Projects
-# RaceRun
 
 RaceRunApp - online platform for runners. Whether you're a seasoned marathoner or just starting your running journey, RaceRun is here to help you discover clubs, find exciting races, and turn your running dreams into reality.
 
