@@ -41,7 +41,8 @@ namespace RaceRunApp.Controllers
                 Id = user.Id,
                 UserName = user.UserName,
                 Mileage=user.Mileage,
-                Pace=user.Pace
+                Pace=user.Pace,
+                ProfileImageUrl = user.ProfileImageUrl
             };
             return View(userDetailViewModel);
         }

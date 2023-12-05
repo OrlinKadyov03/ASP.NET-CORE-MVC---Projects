@@ -7,11 +7,12 @@
             <h1 class="jumbotron-heading">Race Run</h1>
         <p class="lead text-muted">RaceRunApp simplifies the process of discovering local running clubs, nearby races, and connecting with like-minded individuals who share a passion for running</p>
     </div>
+
 </section>
 
-<div class="album py-5 bg-body-tertiary">
+<h3 class="fw-light">Running clubs near @Model.City, @Model.State</h3>
+<div class="album py-5 bg-light">
     <div class="container">
-        <h1 class="fw-light">Running clubs near @Model.City, @Model.State</h1>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @if(Model.Clubs == null)
             {
@@ -22,6 +23,7 @@
             {
                 @foreach (var club in Model.Clubs)
                 {
+
                     <div class="col">
                         <div class="card shadow-sm">
                             <img class="card-img-top" src="@club.Image" width="100%" height="225" />

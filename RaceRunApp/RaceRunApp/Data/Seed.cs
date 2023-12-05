@@ -125,21 +125,21 @@ namespace RaceRunApp.Data
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-                string adminUserEmail = "orlinvidenov@gmail.com";
+                string adminUserEmail = "teddysmithdeveloper@gmail.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
                 {
                     var newAdminUser = new AppUser()
                     {
-                        UserName = "orlinv",
+                        UserName = "teddysmithdev",
                         Email = adminUserEmail,
                         EmailConfirmed = true,
                         Address = new Address()
                         {
-                            Street = "Pionerska 21",
-                            City = "Velingrad",
-                            State = "Pazardjik"
+                            Street = "123 Main St",
+                            City = "Charlotte",
+                            State = "NC"
                         }
                     };
                     await userManager.CreateAsync(newAdminUser, "Coding@1234?");
