@@ -135,10 +135,26 @@ namespace RaceRunApp.Controllers
             
 
         }
-        public IActionResult Delete()
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var clubDetails = await _clubRepository.GetIdByAsync(id);
+            if (clubDetails == null) return View("Error");
+            return View(clubDetails);
+
         }
+
+        [HttpPost,ActionName("Delete")]
+        public async Task<IActionResult> DeleteClub(int id)
+        {
+            var clubDetails = await _clubRepository.GetIdByAsync(id);
+            if (clubDetails == null) return View("Error");
+            
+            _clubRepository.Delete(clubDetails);
+             return RedirectToAction("Index");
+
+        }
+
+
 
 
     }

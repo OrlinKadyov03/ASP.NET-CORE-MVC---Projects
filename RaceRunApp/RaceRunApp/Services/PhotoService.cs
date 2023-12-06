@@ -41,7 +41,6 @@ namespace RaceRunApp.Services
             var deleteParams = new DeletionParams(publicId);
             var result = await _cloudinary.DestroyAsync(deleteParams);
             return result;
-            
 
         }
     }

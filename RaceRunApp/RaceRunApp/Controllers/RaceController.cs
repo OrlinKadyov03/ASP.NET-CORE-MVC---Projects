@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RaceRunApp.Data;
 using RaceRunApp.Interfaces;
 using RaceRunApp.Models;
+using RaceRunApp.Repository;
 using RaceRunApp.ViewModels;
 using System.Diagnostics.Eventing.Reader;
 
@@ -132,9 +133,23 @@ namespace RaceRunApp.Controllers
                 return View(raceVM);
             }
         }
-        public IActionResult Delete()
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var raceDetails = await _raceRepository.GetIdByAsync(id);
+            if (raceDetails == null) return View("Error");
+            return View(raceDetails);
+
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteClub(int id)
+        {
+            var raceDetails = await _raceRepository.GetIdByAsync(id);
+            if (raceDetails == null) return View("Error");
+
+            _raceRepository.Delete(raceDetails);
+            return RedirectToAction("Index");
+
         }
 
     }
