@@ -27,7 +27,7 @@ namespace RaceRunApp.Controllers
             var homeViewModel = new HomeViewModel();
             try
             {
-                string url = "";
+                string url = "https://ipinfo.io/95.140.220.160?token=bfd941d4ed98e7";
                 var info = new WebClient().DownloadString(url);
                 ipInfo = JsonConvert.DeserializeObject<IpInfo>(info);
                 RegionInfo myRI1 = new RegionInfo(ipInfo.Country);
