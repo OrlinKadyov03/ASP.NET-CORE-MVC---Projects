@@ -52,18 +52,23 @@ namespace PokemonReviewApp.Tests.Controller
             //Arrange
             int ownerId = 1;
             int catId = 2;
+            var pokemonMap = A.Fake<Pokemon>();
             var pokemon = A.Fake<Pokemon>();
             var pokemonCreate = A.Fake<PokemonDto>();
             var pokemons = A.Fake<ICollection<PokemonDto>>();
             var pokemonList = A.Fake<List<PokemonDto>>();
-            A.CallTo(() => _pokemonRepository.GetPokemons().Where(c => c.Name.Trim().ToUpper() == pokemonCreate.Name.TrimEnd().ToUpper()).FirstOrDefault()).Returns(pokemon);
-
+            A.CallTo(() => _pokemonRepository.GetPokemonTrimToUpper(pokemonCreate)).Returns(pokemon);
             A.CallTo(() => _mapper.Map<Pokemon>(pokemonCreate)).Returns(pokemon);
-            A.CallTo(() => _pokemonRepository.CreatePokemon(ownerId, catId,pokemon));
+            A.CallTo(() => _pokemonRepository.CreatePokemon(ownerId, catId,pokemonMap)).Returns(true);
+            var controller = new PokemonController(_pokemonRepository , _reviewRepository, _mapper);
 
             //Act
 
+            var result = controller.CreatePokemon(ownerId, catId,pokemonCreate);
+
             //Assert
+
+            result.Should().NotBeNull();
         }
     }
 }
