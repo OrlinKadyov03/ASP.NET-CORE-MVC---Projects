@@ -70,5 +70,22 @@ namespace PokemonReviewApp.Tests.Controller
 
             result.Should().NotBeNull();
         }
+
+        [Fact]
+        public void PokemonController_GetPokemonRating_ReturnOk() 
+        {
+            var pokeId = 1;
+            var pokemons = A.Fake<ICollection<PokemonDto>>();
+            var pokemonCreate = A.Fake<PokemonDto>();
+            A.CallTo(() => _pokemonRepository.GetPokemonRating(pokeId)).Returns(pokeId);
+            var controller = new PokemonController(_pokemonRepository, _reviewRepository, _mapper);
+
+            var result = controller.GetPokemonRating(pokeId);
+
+
+            result.Should().NotBeNull();
+
+            
+        }
     }
 }
