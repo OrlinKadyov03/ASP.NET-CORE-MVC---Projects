@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace PokemonReviewApp.Tests
@@ -7,7 +8,7 @@ namespace PokemonReviewApp.Tests
         [Fact]
         public void Test1()
         {
-
+            Console.WriteLine("Test");
         }
     }
 }
