@@ -9,7 +9,7 @@ RaceRunApp - online platform for runners. Whether you're a seasoned marathoner o
 
 ## How It Works
 
-Simply sign up, explore, and run! RaceRun provides a user-friendly experience to streamline your running adventure.
+Simply sign up, explore, and run! RaceRun provides a user-friendly experience to streamline your running adventure..
 
 ## Support and Feedback
 
