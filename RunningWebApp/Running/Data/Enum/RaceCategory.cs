@@ -2,8 +2,8 @@
 {
     public enum RaceCategory
     {
-        Marthon,
-        Ultram,
+        Marathon,
+        Ultra,
         FiveK,
         TenK,
         HalfMarathon

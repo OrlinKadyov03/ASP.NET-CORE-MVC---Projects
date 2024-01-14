@@ -83,7 +83,7 @@ namespace Running.Data
                             Title = "Running Race 1",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first race",
-                            RaceCategory = RaceCategory.Marthon,
+                            RaceCategory = RaceCategory.Marathon,
                             Address = new Address()
                             {
                                 Street = "123 Main St",
@@ -96,7 +96,7 @@ namespace Running.Data
                             Title = "Running Race 2",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first race",
-                            RaceCategory = RaceCategory.Ultram,
+                            RaceCategory = RaceCategory.Ultra,
                             AddressId = 5,
                             Address = new Address()
                             {
