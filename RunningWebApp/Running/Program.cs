@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Running.Data;
+
 namespace Running
 {
     public class Program
@@ -8,8 +11,16 @@ namespace Running
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ApplicationDbContext>(options => {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); 
+            });
 
             var app = builder.Build();
+            if(args.Length == 1 && args[0].ToLower() == "seeddata") 
+            {
+                //Seed.SeedUsersAndRolesAsync(app);
+                Seed.SeedData(app);
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
