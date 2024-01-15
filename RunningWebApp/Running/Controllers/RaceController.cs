@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Running.Data;
+using Running.Models;
 
 namespace Running.Controllers
 {
@@ -15,6 +17,12 @@ namespace Running.Controllers
         {
             var races = _context.Races.ToList();
             return View(races);
+        }
+
+        public IActionResult Detail(int id) 
+        {
+            Race race = _context.Races.Include(a=>a.Address).FirstOrDefault(r => r.Id == id);
+            return View(race);
         }
     }
 }
