@@ -39,6 +39,10 @@ namespace Running.Repository
         {
             return await _context.Clubs.Include(i =>i.Address).FirstOrDefaultAsync(i => i.Id == id);
         }
+        public async Task<Club> GetIdByNotTrackingAsync(int id) 
+        {
+            return await _context.Clubs.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
+        }
 
         public bool Save()
         {

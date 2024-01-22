@@ -35,6 +35,11 @@ namespace Running.Repository
             return await this._context.Races.Include(i=>i.Address).FirstOrDefaultAsync(i => i.Id == id);
         }
 
+        public async Task<Race> GetIdByNotTrackingAsync(int id) 
+        {
+            return await this._context.Races.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
+        }
+
         public async Task<IEnumerable<Race>> GetAllRaceByCity(string city)
         {
             return await this._context.Races.Where(r=>r.Address.City.Contains(city)).ToListAsync();

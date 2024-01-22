@@ -6,6 +6,8 @@ namespace Running.Interfaces
     {
         Task<IEnumerable<Race>> GetAll();
         Task<Race> GetIdByAsync(int id);
+
+        Task<Race> GetIdByNotTrackingAsync(int id);
         Task<IEnumerable<Race>> GetAllRaceByCity(string city);
 
         bool Add(Race race);
