@@ -146,6 +146,29 @@ namespace Running.Data
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
                 }
 
+                var userManagerO = serviceScope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+                string adminUserEmailO = "orlinkadyovdeveloper@gmail.com";
+
+                var adminUserO = await userManager.FindByEmailAsync(adminUserEmailO);
+                if (adminUserO == null)
+                {
+                    var newAdminUser = new AppUser()
+                    {
+                        UserName = "orlinkadyov",
+                        Email = adminUserEmailO,
+                        EmailConfirmed = true,
+                        Address = new Address()
+                        {
+                            Street = "Pionerska",
+                            City = "Plovidv",
+                            State = "Plovdiv"
+                        }
+                    };
+                    await userManagerO.CreateAsync(newAdminUser, "Coding@1234?");
+                    await userManagerO.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                }
+
+
                 string appUserEmail = "user@etickets.com";
 
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
