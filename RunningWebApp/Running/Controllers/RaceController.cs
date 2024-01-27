@@ -140,7 +140,7 @@ namespace Running.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteClub(int id)
+        public async Task<IActionResult> DeleteRace(int id)
         {
             var raceDetails = await _raceRepository.GetIdByAsync(id);
             if (raceDetails == null) return View("Error");
