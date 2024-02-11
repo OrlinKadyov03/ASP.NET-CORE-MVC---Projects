@@ -25,6 +25,7 @@ namespace Running.Controllers
                     UserName = user.UserName,
                     Pace = user.Pace,
                     Mileage = user.Mileage,
+                    ProfileImageUrl = user.ProfileImageUrl
                 };
                 result.Add(userViewModel);
             }
