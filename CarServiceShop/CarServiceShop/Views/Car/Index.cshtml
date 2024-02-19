@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Car>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h3>Cars</h3>
+<div class="album py-5 bg-body-tertiary">
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">@item.Brand</p>
+                        <p class="card-text">@item.Owner</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+  </div>
+</div>
