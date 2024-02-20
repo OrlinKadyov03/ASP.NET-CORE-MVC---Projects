@@ -20,5 +20,11 @@ namespace CarServiceShop.Controllers
             return View(cars);
         }
 
+        public async Task<IActionResult> Detail(int id) 
+        {
+            Car car = await _carRepository.GetIdByAsync(id);
+            return View(car);
+        }
+
     }
 }

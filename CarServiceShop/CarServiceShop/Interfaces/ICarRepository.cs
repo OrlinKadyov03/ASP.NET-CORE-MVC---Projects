@@ -6,5 +6,7 @@ namespace CarServiceShop.Interfaces
     public interface ICarRepository
     {
         Task<IEnumerable<Car>> GetCars();
+
+        Task<Car> GetIdByAsync(int id);
     }
 }

@@ -18,5 +18,10 @@ namespace CarServiceShop.Repository
         {
             return await this._context.Cars.ToListAsync();
         }
+
+        public async Task<Car> GetIdByAsync(int id)
+        {
+           return await this._context.Cars.Include(i => i.Address).FirstOrDefaultAsync(i => i.Id == id);
+        }
     }
 }

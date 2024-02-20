@@ -1,4 +1,5 @@
 ﻿using CarServiceShop.Models;
+using CarServiceShop.Models.Enum;
 
 namespace CarServiceShop.Data
 {
@@ -22,6 +23,8 @@ namespace CarServiceShop.Data
                             Model = "E46",
                             EngineType = "Petrol 3.0",
                             TransmisionType = "Manual",
+                            YearOfProduction = new DateTime(2003,1,1),
+                            Drivetrain = Drivetrain.RWD,
                             Color = "Grey",
                             Address = new Address()
                             {
@@ -43,6 +46,8 @@ namespace CarServiceShop.Data
                             Model = "W222",
                             EngineType = "Petrol 6.0",
                             TransmisionType = "Automatic",
+                            YearOfProduction = new DateTime(2013,12,1),
+                            Drivetrain = Drivetrain.FOURWHEELDRIVE,
                             Color = "Black",
                             Address = new Address()
                             {
@@ -62,6 +67,8 @@ namespace CarServiceShop.Data
                             Model = "Yaris",
                             EngineType = "Petrol 1.2",
                             TransmisionType = "Manual",
+                            YearOfProduction = new DateTime(2007,1,2),
+                            Drivetrain = Drivetrain.FWD,
                             Color = "Red",
                             Address = new Address()
                             {
@@ -82,6 +89,8 @@ namespace CarServiceShop.Data
                             Model = "S",
                             EngineType = "Petrol 1.6",
                             TransmisionType = "Manual",
+                            YearOfProduction = new DateTime(2005,1,1),
+                            Drivetrain = Drivetrain.FWD,
                             Color = "Blue",
                             Address = new Address()
                             {
@@ -96,9 +105,9 @@ namespace CarServiceShop.Data
                             }
                         }
                     });
+                  } ;
                     context.SaveChanges();
                 }
             }
         }
-    }
-}
+   }
