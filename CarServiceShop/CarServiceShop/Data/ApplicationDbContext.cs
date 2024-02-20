@@ -11,7 +11,6 @@ namespace CarServiceShop.Data
         }
 
         public DbSet<Car> Cars { get; set; }
-
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Address> Addresses { get; set; }
     }

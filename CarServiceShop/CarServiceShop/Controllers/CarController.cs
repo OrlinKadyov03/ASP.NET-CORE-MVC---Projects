@@ -1,4 +1,5 @@
 ﻿using CarServiceShop.Data;
+using CarServiceShop.Interfaces;
 using CarServiceShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,15 +8,15 @@ namespace CarServiceShop.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ICarRepository _carRepository;
 
-        public CarController(ApplicationDbContext context)
+        public CarController(ICarRepository carRepository)
         {
-            this._context = context;
+            this._carRepository = carRepository;
         }
         public async Task<IActionResult> Index()
         {
-            var cars = await this._context.Cars.ToListAsync();
+            IEnumerable<Car> cars = await _carRepository.GetCars();
             return View(cars);
         }
 

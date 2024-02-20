@@ -5,7 +5,7 @@ namespace CarServiceShop.Data
     public class Seed
     {
         public static void SeedData(IApplicationBuilder applicationBuilder)
-        {
+          {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
@@ -19,6 +19,10 @@ namespace CarServiceShop.Data
                         new Car()
                         {
                             Brand = "Bmw",
+                            Model = "E46",
+                            EngineType = "Petrol 3.0",
+                            TransmisionType = "Manual",
+                            Color = "Grey",
                             Address = new Address()
                             {
                                 City = "Velingrad",
@@ -36,6 +40,10 @@ namespace CarServiceShop.Data
                         new Car()
                         {
                             Brand = "Mercedes",
+                            Model = "W222",
+                            EngineType = "Petrol 6.0",
+                            TransmisionType = "Automatic",
+                            Color = "Black",
                             Address = new Address()
                             {
                                 City = "Velingrad",
@@ -51,6 +59,10 @@ namespace CarServiceShop.Data
                         new Car()
                         {
                             Brand = "Toyota",
+                            Model = "Yaris",
+                            EngineType = "Petrol 1.2",
+                            TransmisionType = "Manual",
+                            Color = "Red",
                             Address = new Address()
                             {
                                 City = "Velingrad",
@@ -67,6 +79,10 @@ namespace CarServiceShop.Data
                         new Car()
                         {
                             Brand = "Mini",
+                            Model = "S",
+                            EngineType = "Petrol 1.6",
+                            TransmisionType = "Manual",
+                            Color = "Blue",
                             Address = new Address()
                             {
                                 City = "Velingrad",
@@ -79,7 +95,7 @@ namespace CarServiceShop.Data
                                 LastName = "Ivanov",
                             }
                         }
-                    }) ;
+                    });
                     context.SaveChanges();
                 }
             }

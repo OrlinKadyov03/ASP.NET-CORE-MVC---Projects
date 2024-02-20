@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<Car>
+
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 
-<h3>Cars</h3>
+<h3>Cars for service</h3>
 <div class="album py-5 bg-body-tertiary">
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -14,8 +15,13 @@
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <p class="card-text">@item.Brand</p>
-                        <p class="card-text">@item.Owner</p>
+                            <p class="card-text">@item.Brand @item.Model</p> 
+                            <p class="card-text">Color: @item.Color</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a asp-controller="Car" asp-action="Detail" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

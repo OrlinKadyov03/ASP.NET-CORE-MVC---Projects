@@ -8,6 +8,10 @@ namespace CarServiceShop.Models
         [Key]
         public int Id { get; set; }
         public string Brand { get; set; }
+        public string Model { get; set; }
+        public string EngineType { get; set; }
+        public string TransmisionType { get; set; }
+        public string Color { get; set; }
         public Owner Owner { get; set; }
         public Address Address { get; set; }    
 
