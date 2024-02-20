@@ -8,11 +8,11 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title">@Model.Brand @Model.Model</h3>
+            <h3 class="card-title">@Model.Brand @Model.Model - @Model.RegisterPlate</h3>
             <div class="row">
                 <div class="col-lg-7 col-md-7 col-sm-6">
                     <h4 class="box-title mt-5">Service description</h4>
-                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                    <p>@Model.DescriptionProblem</p>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <h3 class="box-title mt-5">General Info</h3>
@@ -26,6 +26,14 @@
                                 <tr>
                                     <td>Model</td>
                                     <td>@Model.Model</td>
+                                </tr>
+                                <tr>
+                                    <td>Engine volume</td>
+                                    <td>@Model.EngineVolume</td>
+                                </tr>
+                                <tr>
+                                    <td>Horsepower</td>
+                                    <td>@Model.Horsepower</td>
                                 </tr>
                                 <tr>
                                     <td>Engine type</td>
@@ -42,6 +50,10 @@
                                 <tr>
                                     <td>Drivetrain</td>
                                     <td>@Model.Drivetrain</td>
+                                </tr>
+                                <tr>
+                                    <td>Category</td>
+                                    <td>@Model.Category</td>
                                 </tr>
                                 <tr>
                                     <td>Color</td>
