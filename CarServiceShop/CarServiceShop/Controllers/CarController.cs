@@ -42,5 +42,20 @@ namespace CarServiceShop.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var cardetails = await _carRepository.GetIdByAsync(id);
+            if (cardetails == null) return View("Error");
+            _carRepository.Delete(cardetails);
+            return RedirectToAction("Index");
+
+        }
+
     }
 }
