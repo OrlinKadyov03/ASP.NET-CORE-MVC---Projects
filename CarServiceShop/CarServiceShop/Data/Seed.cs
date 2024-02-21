@@ -31,12 +31,6 @@ namespace CarServiceShop.Data
                             YearOfProduction = new DateTime(2003,1,1),
                             Drivetrain = Drivetrain.RWD,
                             Color = "Grey",
-                            Address = new Address()
-                            {
-                                City = "Velingrad",
-                                State = "Pazardjik",
-                                Street = "Vubls2"
-                            },
                             Owner = new Owner()
                             {
                                 FirstName = "Ivan",
@@ -59,12 +53,6 @@ namespace CarServiceShop.Data
                             YearOfProduction = new DateTime(2013,12,1),
                             Drivetrain = Drivetrain.FOURWHEELDRIVE,
                             Color = "Black",
-                            Address = new Address()
-                            {
-                                City = "Velingrad",
-                                State = "Pazardjik",
-                                Street = "Vubls2"
-                            },
                             Owner = new Owner()
                             {
                                 FirstName = "Dragan",
@@ -85,12 +73,6 @@ namespace CarServiceShop.Data
                             YearOfProduction = new DateTime(2007,1,2),
                             Drivetrain = Drivetrain.FWD,
                             Color = "Red",
-                            Address = new Address()
-                            {
-                                City = "Velingrad",
-                                State = "Pazardjik",
-                                Street = "Vubls2"
-                            },
                             Owner = new Owner()
                             {
                                 FirstName = "Dido",
@@ -112,12 +94,6 @@ namespace CarServiceShop.Data
                             YearOfProduction = new DateTime(2005,1,1),
                             Drivetrain = Drivetrain.FWD,
                             Color = "Blue",
-                            Address = new Address()
-                            {
-                                City = "Velingrad",
-                                State = "Pazardjik",
-                                Street = "Vubls2"
-                            },
                             Owner = new Owner()
                             {
                                 FirstName = "Ioan",

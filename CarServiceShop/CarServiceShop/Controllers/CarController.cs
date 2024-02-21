@@ -12,7 +12,7 @@ namespace CarServiceShop.Controllers
 
         public CarController(ICarRepository carRepository)
         {
-            this._carRepository = carRepository;
+            this._carRepository = carRepository;       
         }
         public async Task<IActionResult> Index()
         {
@@ -24,6 +24,22 @@ namespace CarServiceShop.Controllers
         {
             Car car = await _carRepository.GetIdByAsync(id);
             return View(car);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Car car) 
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(car);
+            }
+            _carRepository.Add(car);
+            return RedirectToAction("Index");
         }
 
     }

@@ -1,0 +1,74 @@
+﻿@using CarServiceShop.Models.Enum
+@model Car
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Brand">Brand</label>
+        <input asp-for="Brand" class="form-control" placeholder="Brand">
+        <span asp-validation-for="Brand" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Model">Model</label>
+        <input asp-for="Model" class="form-control" placeholder="Model">
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EngineVolume">Engine volume</label>
+        <input asp-for="EngineVolume" class="form-control" placeholder="Engine volume">
+        <span asp-validation-for="EngineVolume" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Horsepower">Horsepower</label>
+        <input asp-for="Horsepower" class="form-control" placeholder="Horsepower">
+        <span asp-validation-for="Horsepower" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EngineType">Engine type</label>
+        <select asp-for="EngineType" asp-items="@Html.GetEnumSelectList<EngineType>()">
+            <option>Select</option>
+        </select>
+        <span asp-validation-for="EngineType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TransmisionType">Transmision type</label>
+        <select asp-for="TransmisionType" asp-items="@Html.GetEnumSelectList<TransmisionType>()">
+            <option>Select</option>
+        </select>
+        <span asp-validation-for="TransmisionType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Color">Color</label>
+        <input asp-for="Color" class="form-control" placeholder="Color">
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category">Category type</label>
+        <select asp-for="Category" asp-items="@Html.GetEnumSelectList<CarCategory>()">
+            <option>Select</option>
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DescriptionProblem">Description problem</label>
+        <input asp-for="DescriptionProblem" class="form-control" placeholder="Description problem">
+        <span asp-validation-for="DescriptionProblem" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RegisterPlate">Register plate</label>
+        <input asp-for="RegisterPlate" class="form-control" placeholder="Register plate">
+        <span asp-validation-for="RegisterPlate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="YearOfProduction">Year of production</label>
+        <input asp-for="YearOfProduction" class="form-control" placeholder="Year of production">
+        <span asp-validation-for="YearOfProduction" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Drivetrain">Drivetrain</label>
+        <select asp-for="Drivetrain" asp-items="@Html.GetEnumSelectList<Drivetrain>()">
+            <option>Select</option>
+        </select>
+        <span asp-validation-for="Drivetrain" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

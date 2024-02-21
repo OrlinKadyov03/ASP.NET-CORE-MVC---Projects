@@ -21,8 +21,9 @@ namespace CarServiceShop.Models
         public string RegisterPlate { get; set; }
         public DateTime YearOfProduction { get; set; }
         public Drivetrain Drivetrain { get; set; }
-        public Owner Owner { get; set; }
-        public Address Address { get; set; }    
+        [ForeignKey("Owner")]
+        public int? OwnerId { get; set; }
+        public Owner? Owner { get; set; }  
 
 
     }

@@ -14,6 +14,7 @@ namespace CarServiceShop
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<ICarRepository,CarRepository>();
+           
 
             // Add Migration
             builder.Services.AddDbContext<ApplicationDbContext>(options =>{

@@ -8,5 +8,11 @@ namespace CarServiceShop.Interfaces
         Task<IEnumerable<Car>> GetCars();
 
         Task<Car> GetIdByAsync(int id);
+
+        bool Add(Car car);
+
+        bool Update(Car car);
+        bool Delete(Car car);
+        bool Save();
     }
 }
