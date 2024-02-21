@@ -1,9 +1,10 @@
 ﻿@using CarServiceShop.Models.Enum
 @using CarServiceShop.ViewModels
-@model CreateCarViewModel
+@model EditCarViewModel
 
-<form asp-action="Create" method="post">
+<form asp-action="Edit" method="post">
     <div class="form-group">
+        <input type="hidden" value="OwnerId" id="OwnerId" />
         <label asp-for="Brand">Brand</label>
         <input asp-for="Brand" class="form-control" placeholder="Brand">
         <span asp-validation-for="Brand" class="text-danger"></span>

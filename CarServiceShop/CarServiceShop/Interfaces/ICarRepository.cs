@@ -9,6 +9,8 @@ namespace CarServiceShop.Interfaces
 
         Task<Car> GetIdByAsync(int id);
 
+        Task<Car> GetIdByAsyncAsNoTracking(int id);
+
         bool Add(Car car);
 
         bool Update(Car car);

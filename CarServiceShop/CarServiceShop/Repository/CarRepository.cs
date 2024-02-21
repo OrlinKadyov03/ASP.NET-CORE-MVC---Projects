@@ -36,7 +36,10 @@ namespace CarServiceShop.Repository
         {
            return await this._context.Cars.FirstOrDefaultAsync(i => i.Id == id);
         }
-
+        public async Task<Car> GetIdByAsyncAsNoTracking(int id)
+        {
+            return await this._context.Cars.AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
+        }
         public bool Save()
         {
             var saved = this._context.SaveChanges();
