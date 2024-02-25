@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CarServiceShop.Models
 {
-    public class Owner
+    public class Owner : IdentityUser
     {
         [Key]
         public int Id { get; set; }

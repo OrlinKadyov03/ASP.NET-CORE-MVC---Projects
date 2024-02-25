@@ -1,6 +1,9 @@
 using CarServiceShop.Data;
 using CarServiceShop.Interfaces;
+using CarServiceShop.Models;
 using CarServiceShop.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarServiceShop
@@ -14,6 +17,13 @@ namespace CarServiceShop
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<ICarRepository,CarRepository>();
+
+            //Identity
+            builder.Services.AddIdentity<Owner, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSession();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
            
 
             // Add Migration
@@ -42,6 +52,7 @@ namespace CarServiceShop
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.MapControllerRoute(
                 name: "default",
