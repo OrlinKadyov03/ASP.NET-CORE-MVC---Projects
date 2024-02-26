@@ -54,11 +54,7 @@ namespace CarServiceShop.Data
                             YearOfProduction = new DateTime(2013,12,1),
                             Drivetrain = Drivetrain.FOURWHEELDRIVE,
                             Color = "Black",
-                            Owner = new Owner()
-                            {
-                                FirstName = "Dragan",
-                                LastName = "Ivanov",
-                            }
+  
                         },
                         new Car()
                         {
@@ -74,11 +70,7 @@ namespace CarServiceShop.Data
                             YearOfProduction = new DateTime(2007,1,2),
                             Drivetrain = Drivetrain.FWD,
                             Color = "Red",
-                            Owner = new Owner()
-                            {
-                                FirstName = "Dido",
-                                LastName = "Ivanov",
-                            }
+
 
                         },
                         new Car()
@@ -95,11 +87,7 @@ namespace CarServiceShop.Data
                             YearOfProduction = new DateTime(2005,1,1),
                             Drivetrain = Drivetrain.FWD,
                             Color = "Blue",
-                            Owner = new Owner()
-                            {
-                                FirstName = "Ioan",
-                                LastName = "Ivanov",
-                            }
+
                         }
                     });
                   } ;
@@ -120,7 +108,7 @@ namespace CarServiceShop.Data
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<Owner>>();
-                string adminUserEmail = "teddysmithdeveloper@gmail.com";
+                string adminUserEmail = "orlinkadyov@gmail.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
@@ -143,7 +131,7 @@ namespace CarServiceShop.Data
                 }
 
                 var userManagerO = serviceScope.ServiceProvider.GetRequiredService<UserManager<Owner>>();
-                string adminUserEmailO = "orlinkadyovdeveloper@gmail.com";
+                string adminUserEmailO = "veselinkadyov@gmail.com";
 
                 var adminUserO = await userManager.FindByEmailAsync(adminUserEmailO);
                 if (adminUserO == null)
@@ -166,7 +154,7 @@ namespace CarServiceShop.Data
                 }
 
 
-                string appUserEmail = "user@etickets.com";
+                string appUserEmail = "ivangalov@gmail.com";
 
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
                 if (appUser == null)

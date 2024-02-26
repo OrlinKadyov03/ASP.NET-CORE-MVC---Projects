@@ -18,6 +18,11 @@ namespace CarServiceShop
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<ICarRepository,CarRepository>();
 
+            // Add Migration
+            builder.Services.AddDbContext<ApplicationDbContext>(options => {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
             //Identity
             builder.Services.AddIdentity<Owner, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -26,16 +31,12 @@ namespace CarServiceShop
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
            
 
-            // Add Migration
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>{
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
 
             var app = builder.Build();
             if (args.Length == 1 && args[0].ToLower() == "seeddata")
             {
+                Seed.SeedUsersAndRolesAsync(app);
                 Seed.SeedData(app);
-                //Seed.SeedData(app);
             }
 
             // Configure the HTTP request pipeline.

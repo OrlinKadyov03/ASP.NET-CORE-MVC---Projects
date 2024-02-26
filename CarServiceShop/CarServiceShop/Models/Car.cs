@@ -22,7 +22,7 @@ namespace CarServiceShop.Models
         public DateTime YearOfProduction { get; set; }
         public Drivetrain Drivetrain { get; set; }
         [ForeignKey("Owner")]
-        public int? OwnerId { get; set; }
+        public string? OwnerId { get; set; }
         public Owner? Owner { get; set; }  
 
 
