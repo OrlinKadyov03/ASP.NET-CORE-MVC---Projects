@@ -4,6 +4,7 @@ namespace CarServiceShop.ViewModels
 {
     public class CreateCarViewModel
     {
+        public int Id { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
         public int EngineVolume { get; set; }
@@ -16,6 +17,6 @@ namespace CarServiceShop.ViewModels
         public string RegisterPlate { get; set; }
         public DateTime YearOfProduction { get; set; }
         public Drivetrain Drivetrain { get; set; }
-        public int OwnerId { get; set; }
+        public string OwnerId { get; set; }
     }
 }

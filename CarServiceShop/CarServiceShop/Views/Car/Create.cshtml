@@ -3,6 +3,7 @@
 @model CreateCarViewModel
 
 <form asp-action="Create" method="post">
+    <input type="hidden" id="OwnerId" name="OwnerId" asp-for="OwnerId" />
     <div class="form-group">
         <label asp-for="Brand">Brand</label>
         <input asp-for="Brand" class="form-control" placeholder="Brand">

@@ -10,10 +10,12 @@ namespace CarServiceShop.Controllers
     public class CarController : Controller
     {
         private readonly ICarRepository _carRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CarController(ICarRepository carRepository)
+        public CarController(ICarRepository carRepository,IHttpContextAccessor httpContextAccessor)
         {
-            this._carRepository = carRepository;       
+            this._carRepository = carRepository;
+            this._httpContextAccessor = httpContextAccessor;
         }
         public async Task<IActionResult> Index()
         {
@@ -29,7 +31,9 @@ namespace CarServiceShop.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            var curUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var createCarViewModel = new CreateCarViewModel { OwnerId = curUserId };
+            return View(createCarViewModel);
         }
 
         [HttpPost]
@@ -51,12 +55,16 @@ namespace CarServiceShop.Controllers
                     RegisterPlate = carVM.RegisterPlate,
                     YearOfProduction = carVM.YearOfProduction,
                     Drivetrain = carVM.Drivetrain,
+                    OwnerId = carVM.OwnerId
                 };
                 _carRepository.Add(car);
 
                 return RedirectToAction("Index");
             }
-            return View(carVM);
+            else 
+            {
+                return View(carVM);
+            }
         }
 
         public IActionResult Delete()

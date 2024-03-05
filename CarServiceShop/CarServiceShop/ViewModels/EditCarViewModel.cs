@@ -17,6 +17,7 @@ namespace CarServiceShop.ViewModels
         public string RegisterPlate { get; set; }
         public DateTime YearOfProduction { get; set; }
         public Drivetrain Drivetrain { get; set; }
+
         public int OwnerId { get; set; }
     }
 }

@@ -35,5 +35,36 @@ namespace CarServiceShop.Controllers
             return View(dashboardViewModel);
             
         }
+
+        public async Task<IActionResult> EditUserProfile()
+        {
+            var curUserId = _httpContextAccessor.HttpContext.User.GetUserId();
+            var user = await _dashboardRepository.GetUserById(curUserId);
+            if (user == null) return View("Error");
+            var editUserViewModel = new EditUserDashboardViewModel()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                City = user.Address?.City,
+                State = user.Address?.State,
+            };
+            return View(editUserViewModel);
+            
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUserProfile(EditUserDashboardViewModel editVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Cannot edit profile");
+                return View("EditUserProfile",editVM);
+            }
+
+            var user = await _dashboardRepository.GetIdByNoTracking(editVM.Id);
+            MapUserEdit(user,editVM);
+            _dashboardRepository.Update(user);
+
+            return RedirectToAction("Index");
+        }
     }
 }
