@@ -5,7 +5,7 @@ RaceRunApp - online platform for runners. Whether you're a seasoned marathoner o
 ## Features
 
 - **Club Finder:** Locate running clubs in your area to connect with like-minded individuals.
-- **Race Explorer:** Discover upcoming races and events tailored to your preferences.
+- **Race Explorer:** Discover upcoming races and events tailored to your preferences..
 
 ## How It Works
 
